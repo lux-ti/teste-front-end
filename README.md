@@ -16,7 +16,7 @@ Implementar uma aplicação client-side, que consulte a API do GitHub e mostre o
 - Se o usuário for encontrado, apresentar os detalhes do usuário, senão, exibir mensagem amigável.
 
 ## Guia de estilo
-https://www.figma.com/file/EPSjmPkenIl2CE60Pwu1jR/desafio-lux?node-id=1%3A52
+https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=0%3A1
 
 ## Integração com a API
   
