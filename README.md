@@ -47,3 +47,5 @@ A aplicação deve estar hospedada em algum lugar (Github Pages, Netlify, Heroku
 Envie um Pull-Request para https://github.com/lux-ti/teste-front-end contendo o link público de teste do projeto.
 
 Divirta-se!
+
+Site:https://bejewelled-meerkat-20f2a5.netlify.app/
