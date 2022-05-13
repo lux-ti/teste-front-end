@@ -1,10 +1,10 @@
 <template>
     <div class="painel">
         <header>
-            <section ></section>
+            <section ><b>Github</b> Search</section>
             <section >
                 <div class="btn-search">
-                    <input type="search" name="" id=""><button class="btn"><Icon icon="ant-design:search-outlined" color="white" width="15"/></button>
+                    <input type="search" name="" id="" :placeholder="login"><button class="btn"><Icon icon="ant-design:search-outlined" color="white" width="15"/></button>
                 </div>
             </section>
             <section ></section>
@@ -33,7 +33,7 @@
                 <ul id="list1">
                     <li v-for="item in repos" :key="item.id">
                         <p v-text="item.name"></p>
-                        <p v-text="item.full_name"></p>
+                        <p v-text="item.bio"></p>
                         <p><Icon icon="akar-icons:star" /> {{item.stargazers_count}}</p>
                     </li>
                 </ul>
@@ -99,6 +99,7 @@ footer{
     text-align: left;
 }
 .info{
+    margin-bottom: 10px;
     display: flex;
     justify-content: flex-start;
     text-align: left;
@@ -111,7 +112,9 @@ footer{
     margin-bottom: 5px;
 }
 #list1 li{
-    padding: 5px;
+    text-align: left;
+    padding: 10px;
+    margin-left: 20px;
 }
 </style>
 <script>

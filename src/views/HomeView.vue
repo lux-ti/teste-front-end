@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <label for="searc">GITHUB SEARCH</label>
+    <label for="searc"><b>Github</b> Search</label>
     <div>
       <input type="search" name="" id="searc" v-model="value"><button @click="search()" :disabled='button'>Buscar</button>
     </div>
@@ -17,8 +17,6 @@
   }
 </style>
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'HomeView',
@@ -28,9 +26,6 @@ export default {
       url:'https://api.github.com/users/',
       button:false
     }
-  },
-  components: {
-    HelloWorld
   },
   methods:{
    async search(){
