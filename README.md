@@ -12,8 +12,7 @@ Implementar uma aplicação client-side, que consulte a API do GitHub e mostre o
 - Eu, como usuário, desejo adicionar repositórios em uma lista de repositórios favoritos e conseguir acessa-los em uma página "Favoritos".
 
 ## Navegação
-- Ao buscar um usuário pelo login do github, redirecionar para página de resultados da busca.
-- Se o usuário for encontrado, apresentar os detalhes do usuário, senão, exibir mensagem amigável.
+- Ao buscar um usuário pelo login do github, se o usuário for encontrado,redirecionar para página de resultados da busca e apresentar os detalhes do usuário, senão, exibir mensagem amigável.
 
 ## Guia de estilo
 https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=0%3A1
