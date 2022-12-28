@@ -8,7 +8,7 @@ Implementar uma aplicação client-side, que consulte a API do GitHub e mostre o
 ## Requisitos
 - Eu, como usuário, desejo buscar por um usuário do GitHub;
 - Eu, como usuário, desejo visualizar os detalhes desse usuário que foi buscado (organização, localização, número de seguidores, repositórios e stars);
-- Eu, como usuário, desejo visualizar a lista de repositórios do usuário buscado, ordenando pela quantidade de estrela de forma decrescente;
+- Eu, como usuário, desejo visualizar a lista de repositórios do usuário buscado, ordenando pela quantidade de estrela de forma DECRESCENTE;
 - Eu, como usuário, desejo adicionar repositórios em uma lista de repositórios favoritos e conseguir acessa-los em uma página "Favoritos".
 
 ## Navegação
