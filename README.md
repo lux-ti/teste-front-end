@@ -6,10 +6,14 @@ Esse projeto contém um arquivo README.md contendo todas as especificações par
 Implementar uma aplicação client-side, que consulte a API do GitHub e mostre os repositórios de um determinado usuário. Esta aplicação deve funcionar nos principais navegadores.
 
 ## Requisitos
-- Eu, como usuário, desejo buscar por um usuário do GitHub;
-- Eu, como usuário, desejo visualizar os detalhes desse usuário que foi buscado (organização, localização, número de seguidores, repositórios e stars);
-- Eu, como usuário, desejo visualizar a lista de repositórios do usuário buscado, ordenando pela quantidade de estrela de forma DECRESCENTE;
-- Eu, como usuário, desejo adicionar repositórios em uma lista de repositórios favoritos e conseguir acessa-los em uma página "Favoritos".
+- [<a href="https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=3145%3A63&t=ADFxoq9K71CaywhF-0" target="_blank">Resultado de busca por usuário</a>] Eu, como usuário, desejo buscar por um usuário do GitHub, me será mostrado uma lista com o(s) usuário(s) com o nome que eu digitei, onde será mostrado o nome, nome de usuário e quantidade de estrelas;
+- [<a href="https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=4678%3A100&t=ADFxoq9K71CaywhF-0" target="_blank">Usuário selecionado</a>] Eu, como usuário, desejo visualizar os detalhes desse(s) usuário(s) que foi buscado (organização, localização, número de seguidores, repositórios e stars), onde os repositórios tem que ser ordenado em ordem <strong>DECRESCENTE</strong>;
+- [<a href="https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=3145%3A172&t=ADFxoq9K71CaywhF-0" target="_blank">Favoritos</a>] Eu, como usuário, desejo visualizar a tela com os repositórios que eu favoritei acessando na página de "Favoritos".
+- [<a href="https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=4550%3A81&t=ADFxoq9K71CaywhF-0" target="_blank">Não encontrando usuário ou repositório</a>] Eu, como usuário, desejo visualizar um aviso informando que não foi possível encontrar um usuário ou um repositório.
+- [<a href="https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=4549%3A81&t=ADFxoq9K71CaywhF-0" target="_blank">Página não encontrada</a>] Eu, como usuário, desejo visualizar uma tela de erro caso eu vá para alguma tela que não exista no projeto.
+
+### Requisito Bônus
+- [<a href="https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=4568%3A87&t=ADFxoq9K71CaywhF-0" target="_blank">Resultado de Busca por Repositório</a>] Eu, como usuário, desejo buscar por um repositório no GitHub, me será mostrado uma lista com o(s) repositório(s) com o nome que eu digitei, onde será mostrado o nome, descrição, quantidade de estrelas e poderei marcar algum repositório como favorito;
 
 ## Navegação
 - Ao buscar um usuário pelo login do github, se o usuário for encontrado,redirecionar para página de resultados da busca e apresentar os detalhes do usuário, senão, exibir mensagem amigável.
