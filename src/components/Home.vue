@@ -11,23 +11,36 @@
         fill="black"
       />
     </svg>
-
     <form>
       <div class="options">
         <label>
           Repositório
-          <input type="radio" value="Repositório" name="search_option" />
+          <input
+            type="radio"
+            value="Repositório"
+            name="search_option"
+            v-model="selectedOption"
+          />
         </label>
         <label>
           Usuário
-          <input type="radio" value="Usuário" name="search_option" />
+          <input
+            type="radio"
+            value="Usuário"
+            name="search_option"
+            v-model="selectedOption"
+          />
         </label>
       </div>
       <div class="search-field">
         <label for="search"> O que você procura?</label>
-        <input type="search" placeholder="Buscar..." id="search" />
-
-        <button title="Procurar">
+        <input
+          type="search"
+          placeholder="Buscar..."
+          id="search"
+          v-model="searchValue"
+        />
+        <button title="Procurar" @click.prevent="searchHandler">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
             <path
@@ -38,11 +51,46 @@
       </div>
     </form>
   </main>
+  <ErrorSearchModal v-if="error" @onClose="closeErrorModal" />
 </template>
 
 <script>
+import ErrorSearchModal from "./ErrorSearchModal.vue";
+import { GET_REPOSITORIES_OR_USERS } from "../api_links";
+
 export default {
   name: "Home",
+  components: { ErrorSearchModal },
+  data() {
+    return {
+      searchValue: "",
+      selectedOption: "repositories",
+      error: false,
+    };
+  },
+  methods: {
+    searchHandler() {
+      fetch(GET_REPOSITORIES_OR_USERS(this.searchValue, this.selectedOption))
+        .then((response) => {
+          //Se a URL for digitada incorretamente
+          if (!response.ok) throw new Error("URL inválida");
+          return response.json();
+        })
+        .then((data) => {
+          if (data.total_count === 0) {
+            //se não forem retornados resultados:
+            this.error = true;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          this.error = true;
+        });
+    },
+    closeErrorModal() {
+      this.error = false;
+    },
+  },
 };
 </script>
 
