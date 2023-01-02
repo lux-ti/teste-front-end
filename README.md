@@ -23,9 +23,11 @@ https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=0%3A1
 
 ## Integração com a API
   
-URL Base: https://developer.github.com/v3/  
-Informações do usuário: https://api.github.com/users/{username}  
-Repositório de um usuário: https://api.github.com/users/{username}/repos
+- URL Base: https://developer.github.com/v3/  
+- Informações do usuário: https://api.github.com/users/{username}  
+- Repositório de um usuário: https://api.github.com/users/{username}/repos
+- Pesquisar por usuários: https://api.github.com/search/users?q={nome_do_usuário}&page={número_da_página}
+- Pesquisar por repositórios: https://api.github.com/search/repositories?q={nome_do_repositório}&page={número_da_página}
 
 ## Definição de pronto
 
