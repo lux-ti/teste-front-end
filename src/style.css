@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap");
+
+:root {
+  --white: #fff;
+  --gray: #d9d9d9;
+  --gray-2: #757575;
+  --black: #000000;
+  --red: #ff0000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+input,
+button,
+a {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  display: inline-block;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1286px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
