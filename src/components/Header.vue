@@ -22,7 +22,6 @@ export default {
 <style scoped>
 .header {
   background: var(--gray);
-  padding: 1.3rem 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -30,6 +29,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 84px;
 }
 
 .logo {

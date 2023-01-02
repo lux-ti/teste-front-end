@@ -20,6 +20,7 @@ a {
 
 body {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 20px;
 }
 
 input,
@@ -32,8 +33,18 @@ a {
   display: inline-block;
 }
 
+label {
+  display: inline-block;
+}
+
+input {
+  outline: none;
+}
+
 button {
   cursor: pointer;
+  border: none;
+  background: none;
 }
 
 .container {
@@ -41,4 +52,9 @@ button {
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+main {
+  padding: 3rem 0;
+  min-height: calc(100vh - 84px);
 }
