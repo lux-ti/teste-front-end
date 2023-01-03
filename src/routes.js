@@ -7,6 +7,11 @@ function lazyLoad(view) {
 const routes = [
   { path: "/", name: "home", component: lazyLoad("Home") },
   { path: "/favoritos", name: "favoritos", component: lazyLoad("Favoritos") },
+  {
+    path: "/repositories",
+    name: "repositories",
+    component: lazyLoad("Repositories"),
+  },
 ];
 
 export const router = createRouter({

@@ -57,38 +57,39 @@
 <script>
 import ErrorSearchModal from "./ErrorSearchModal.vue";
 import { GET_REPOSITORIES_OR_USERS } from "../api_links";
+import { router } from "../routes";
+import useFetch from "../useFetch";
 
 export default {
   name: "Home",
   components: { ErrorSearchModal },
+  setup() {
+    const { data, loading, error, fetchData } = useFetch();
+
+    return { error, data, fetchData };
+  },
   data() {
     return {
       searchValue: "",
       selectedOption: "repositories",
-      error: false,
     };
   },
   methods: {
-    searchHandler() {
-      fetch(GET_REPOSITORIES_OR_USERS(this.searchValue, this.selectedOption))
-        .then((response) => {
-          //Se a URL for digitada incorretamente
-          if (!response.ok) throw new Error("URL inválida");
-          return response.json();
-        })
-        .then((data) => {
-          if (data.total_count === 0) {
-            //se não forem retornados resultados:
-            this.error = true;
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          this.error = true;
+    async searchHandler() {
+      await this.fetchData(
+        GET_REPOSITORIES_OR_USERS(this.searchValue, this.selectedOption)
+      );
+
+      //se houver resultados vai para a rota da opção selecionada
+      if (this.data.total_count > 0) {
+        router.push({
+          path: this.selectedOption,
+          query: { q: this.searchValue },
         });
+      }
     },
     closeErrorModal() {
-      this.error = false;
+      // this.error = false;
     },
   },
 };
