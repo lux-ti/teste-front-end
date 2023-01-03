@@ -6,7 +6,9 @@
 export default{
     name: 'SubmitRep',
     props:{
-      entrada: String
+      entrada:{
+        type: String,
+      }
     },
         data (){
       return{
@@ -15,9 +17,9 @@ export default{
     },
     methods:{
       async pesquisa(){
-        const reqUser = await fetch("https://api.github.com/search/repositories?q=Vue_Practicing");
-        const data = await reqUser.json();
-
+        const rep = this.entrada;
+        const reqRep = await fetch(`https://api.github.com/search/repositories?q=${rep}`);
+        const data = await reqRep.json();
         console.log(data);
         }
     }

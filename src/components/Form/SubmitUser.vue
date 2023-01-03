@@ -3,20 +3,23 @@
 </template>
 
 <script>
-
-
 export default{
     name: 'SubmitUser',
+    props:{
+      entrada:{
+        type: String,
+      }
+    },
     data (){
       return{
-
+       
       }
     },
     methods:{
       async pesquisa(){
-        const reqUser = await fetch("https://api.github.com/users/coramila");
+        const user = this.entrada;
+        const reqUser = await fetch(`https://api.github.com/users/${user}`);
         const data = await reqUser.json();
-
         console.log(data);
         }
     }

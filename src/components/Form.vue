@@ -3,8 +3,8 @@
     <form action="" @submit="enviarFormulario($event)">
     
         <div class="home-botao">
-          <SubmitRepVue/>
-          <SubmitUserVue/>
+            <router-link to="/repositorios"><SubmitRepVue :entrada="entrada"/></router-link>
+            <router-link to="/usuarios"><SubmitUserVue :entrada="entrada"/></router-link>
         </div>        
         
         <div>
@@ -29,16 +29,12 @@
         },
         data(){
             return{
-                entrada:"",
+                entrada:this.entrada,
             }
         },
         methods:{
             enviarFormulario(e){ // O 'e' está relacionado ao '$event' do form, e nos permite acessar a função preventDefault
                 e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
-                
-                const pesquisa = this.entrada;
-                console.log("botão apertado" + pesquisa);
-             
             }
     }}
     </script>
