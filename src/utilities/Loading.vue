@@ -1,7 +1,29 @@
-<template>loaading...</template>
+<template>
+  <div class="loading"></div>
+</template>
 
 <script>
-export default {};
+export default {
+  name: "Loading",
+};
 </script>
 
-<style></style>
+<style scoped>
+.loading {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+  border: 6px solid var(--black);
+  border-top-color: var(--white);
+  animation: rotate 1s linear forwards infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+</style>

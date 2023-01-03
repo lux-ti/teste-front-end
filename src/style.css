@@ -62,3 +62,10 @@ main {
 ul {
   list-style: none;
 }
+
+.btn {
+  border: 2px solid var(--black);
+  border-radius: 5px;
+  padding: 0.5rem 1.5rem;
+  margin-top: 3rem;
+}

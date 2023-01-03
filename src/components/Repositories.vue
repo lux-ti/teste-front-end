@@ -18,7 +18,7 @@
         </button>
       </form>
       <ul>
-        <li v-for="repo in repositories" :key="repo.id" class="item-repo">
+        <li v-for="repo in dataItems" :key="repo.id" class="item-repo">
           <div>
             <h2 class="repo-name">{{ repo.full_name }}</h2>
             <p class="description">{{ repo.description }}</p>
@@ -42,69 +42,21 @@
         </li>
       </ul>
       <div class="div-btn">
-        <button @click="loadMoreDataHandler" class="load-more">Ver mais</button>
+        <button @click="loadMoreDataHandler" class="btn">Ver mais</button>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import { GET_REPOSITORIES_OR_USERS } from "../api_links";
-import { router } from "../routes";
-import useFetch from "../useFetch";
+import useGetData from "../useGetData";
 
 export default {
   name: "Repositories",
   setup() {
-    const { data, loading, error, fetchData } = useFetch();
+    const { loadMoreDataHandler, dataItems, loading } = useGetData();
 
-    return { error, data, fetchData };
-  },
-  data() {
-    return {
-      query: "",
-      repositories: [],
-      currentPage: 1,
-    };
-  },
-  methods: {
-    async fetchGithubHandler() {
-      this.query = this.$route.query.q;
-      this.option = this.$route.name;
-
-      const backToHome = () =>
-        router.push({
-          path: "/",
-        });
-
-      //se a query "q" não existir ou não possuir valor, a página é redirecionada a "home"
-      if (!this.query) {
-        backToHome();
-      } else {
-        await this.fetchData(
-          GET_REPOSITORIES_OR_USERS(this.query, this.option)
-        );
-
-        //se o total de itens puxados da API for igual a 0, a página é redirecionada a "home"
-        if (this.data.total_count === 0) {
-          backToHome();
-          return;
-        }
-        this.repositories = this.data.items;
-      }
-    },
-    async loadMoreDataHandler() {
-      ++this.currentPage;
-
-      await this.fetchData(
-        GET_REPOSITORIES_OR_USERS(this.query, this.option, this.currentPage)
-      );
-
-      this.repositories = [...this.repositories, ...this.data.items];
-    },
-  },
-  mounted() {
-    this.fetchGithubHandler();
+    return { loadMoreDataHandler, dataItems, loading };
   },
 };
 </script>
@@ -153,12 +105,6 @@ export default {
   margin-top: 1rem;
 }
 
-.load-more {
-  border: 2px solid var(--black);
-  border-radius: 5px;
-  padding: 0.5rem 1.5rem;
-  margin-top: 3rem;
-}
 .form-search {
   max-width: 490px;
   width: 100%;

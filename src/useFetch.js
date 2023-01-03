@@ -12,8 +12,15 @@ const useFetch = () => {
         data.value = null;
         error.value = false;
 
-        //Se a URL for digitada incorretamente
-        if (!response.ok) throw new Error("URL inválida");
+        //Se a URL for digitada incorretamente ou forem realizadas muitas requisições
+        if (!response.ok) {
+          if (response.status === 403) {
+            throw new Error(
+              "Usuário excedeu o limite da taxa de requisições. Tente novamente em breve."
+            );
+          }
+          throw new Error("URL inválida");
+        }
         return response.json();
       })
       .then((jsonData) => {

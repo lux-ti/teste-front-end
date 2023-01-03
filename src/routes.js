@@ -12,6 +12,11 @@ const routes = [
     name: "repositories",
     component: lazyLoad("Repositories"),
   },
+  {
+    path: "/users",
+    name: "users",
+    component: lazyLoad("Users"),
+  },
 ];
 
 export const router = createRouter({
