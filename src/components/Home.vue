@@ -13,24 +13,23 @@
     </svg>
     <form>
       <div class="options">
-        <label>
-          Repositório
-          <input
-            type="radio"
-            value="Repositório"
-            name="search_option"
-            v-model="selectedOption"
-          />
-        </label>
-        <label>
-          Usuário
-          <input
-            type="radio"
-            value="Usuário"
-            name="search_option"
-            v-model="selectedOption"
-          />
-        </label>
+        <input
+          type="radio"
+          value="repositories"
+          name="search_option"
+          v-model="selectedOption"
+          id="repository"
+        />
+        <label for="repository">Repositório</label>
+
+        <input
+          type="radio"
+          value="users"
+          name="search_option"
+          v-model="selectedOption"
+          id="user"
+        />
+        <label for="user"> Usuário </label>
       </div>
       <div class="search-field">
         <label for="search"> O que você procura?</label>
@@ -100,7 +99,8 @@ export default {
   text-align: center;
 }
 
-label > input,
+#repository,
+#user,
 label[for="search"] {
   position: absolute;
   visibility: hidden;
@@ -146,8 +146,10 @@ form {
 }
 
 .options label:first-of-type {
+  margin-right: 2.5rem;
+}
+.options input:checked + label {
   background: var(--black);
   color: var(--white);
-  margin-right: 2.5rem;
 }
 </style>
