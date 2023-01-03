@@ -1,15 +1,30 @@
 <template>
-    <input type="submit" value="Usuário">
+    <button @click="pesquisa()" id="pessoa">Pessoa</button>
 </template>
 
 <script>
+
+
 export default{
-    name: 'SubmitUser'
+    name: 'SubmitUser',
+    data (){
+      return{
+
+      }
+    },
+    methods:{
+      async pesquisa(){
+        const reqUser = await fetch("https://api.github.com/users/coramila");
+        const data = await reqUser.json();
+
+        console.log(data);
+        }
+    }
 }
 </script>
 
 <style scoped>
-input{
+button{
   font-family: 'Inter';
   font-weight: 700;
   size: 20px;
