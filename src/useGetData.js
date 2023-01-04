@@ -1,4 +1,4 @@
-import { onBeforeMount, ref } from "vue";
+import { onMounted, ref } from "vue";
 import useFetch from "./useFetch";
 import { router } from "./routes";
 import { GET_REPOSITORIES_OR_USERS } from "./api_links";
@@ -48,7 +48,7 @@ const useGetData = () => {
     dataItems.value = [...dataItems.value, ...data.value.items];
   };
 
-  onBeforeMount(async () => {
+  onMounted(async () => {
     await fetchGithubHandler();
   });
 

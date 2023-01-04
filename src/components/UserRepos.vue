@@ -1,8 +1,11 @@
-<template>user repos</template>
+<template>
+  <LayoutRepositories :repositoriesList="data" class="repos-user" />
+</template>
 
 <script>
 import { GET_USER_REPOSITORIES } from "../api_links";
 import useFetch from "../useFetch";
+import LayoutRepositories from "../utilities/LayoutRepositories.vue";
 
 export default {
   name: "UserRepos",
@@ -12,15 +15,19 @@ export default {
     return { data, loading, error, fetchData };
   },
   methods: {
-    async fetchUserInfos() {
-      await this.fetchData(GET_USER_REPOSITORIES(this.username));
-      console.log(this.data);
+    fetchUserInfos() {
+      this.fetchData(GET_USER_REPOSITORIES(this.username));
     },
   },
   mounted() {
     this.fetchUserInfos();
   },
+  components: { LayoutRepositories },
 };
 </script>
 
-<style></style>
+<style scoped>
+.repos-user {
+  margin-left: 5rem;
+}
+</style>
