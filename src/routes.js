@@ -17,6 +17,12 @@ const routes = [
     name: "users",
     component: lazyLoad("Users"),
   },
+  {
+    path: "/user/:username",
+    name: "user",
+    component: lazyLoad("UserInfos"),
+    props: true,
+  },
 ];
 
 export const router = createRouter({

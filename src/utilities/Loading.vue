@@ -10,8 +10,8 @@ export default {
 
 <style scoped>
 .loading {
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 100%;
   border: 6px solid var(--black);
   border-top-color: var(--white);

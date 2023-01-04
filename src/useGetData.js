@@ -30,7 +30,7 @@ const useGetData = () => {
       await fetchData(GET_REPOSITORIES_OR_USERS(query.value, option.value));
 
       //se o total de itens puxados da API for igual a 0, a página é redirecionada a "home"
-      if (data.total_count === 0) {
+      if (data.value.total_count === 0) {
         backToHome();
         return;
       }
