@@ -23,6 +23,11 @@ const routes = [
     component: lazyLoad("UserInfos"),
     props: true,
   },
+  {
+    path: "/:notFound(.*)",
+    name: "notfound",
+    component: lazyLoad("NotFound"),
+  },
 ];
 
 export const router = createRouter({

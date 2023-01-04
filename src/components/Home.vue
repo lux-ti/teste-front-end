@@ -88,7 +88,7 @@ export default {
       );
 
       //se houver resultados vai para a rota da opção selecionada
-      if (this.data.total_count > 0) {
+      if (this.data && this.data.total_count > 0) {
         router.push({
           path: this.selectedOption,
           query: { q: this.searchValue },
@@ -96,7 +96,7 @@ export default {
       }
     },
     closeErrorModal() {
-      // this.error = false;
+      this.error = false;
     },
   },
 };
