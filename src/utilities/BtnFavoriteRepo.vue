@@ -71,6 +71,6 @@ export default {
 
 <style scoped>
 .btn-favorite.favorited {
-  color: yellow;
+  color: #ffc700;
 }
 </style>
