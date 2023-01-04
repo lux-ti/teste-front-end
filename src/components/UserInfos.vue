@@ -6,12 +6,14 @@
           <img :src="data.avatar_url" :alt="data.login" />
         </div>
         <h2>{{ data.name }}</h2>
-        <p>{{ data.login }}</p>
+        <p class="loginName">{{ data.login }}</p>
 
-        <span>{{ data.company }}</span>
-        <span>{{ data.location }}</span>
-        <span>{{ data.public_repos }}</span>
-        <span>{{ data.followers }}</span>
+        <span aria-label="empresa atual">{{ data.company }}</span>
+        <span aria-label="localização">{{ data.location }}</span>
+        <span aria-label="total de repositórios públicos">{{
+          data.public_repos
+        }}</span>
+        <span aria-label="seguidores">{{ data.followers }}</span>
       </section>
       <UserRepos v-if="data" :username="data.login" />
     </div>
@@ -45,18 +47,31 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  align-items: flex-start;
 }
 .user-data {
-  max-width: 340px;
-  width: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   background: var(--gray);
   border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .user-data h2 {
   font-weight: 300;
+  font-size: 36px;
+}
+
+.loginName {
+  font-size: 24px;
+  margin-bottom: 2rem;
+}
+
+.user-data span {
+  font-size: 20px;
+}
+.user-data span + span {
+  margin-top: 1rem;
 }
 
 .user-data p,
@@ -64,7 +79,8 @@ export default {
   color: var(--gray-2);
 }
 .div-img {
-  max-width: 100%;
+  width: 300px;
+  height: 300px;
   height: auto;
 }
 

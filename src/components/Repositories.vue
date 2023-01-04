@@ -1,7 +1,10 @@
 <template>
   <main>
     <div class="container">
-      <LayoutRepositories :repositoriesList="dataItems" />
+      <LayoutRepositories
+        :repositoriesList="dataItems"
+        @loadMore="loadMoreDataHandler"
+      />
     </div>
   </main>
 </template>

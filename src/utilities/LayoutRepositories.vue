@@ -19,7 +19,7 @@
     <ul>
       <li v-for="repo in repositoriesList" :key="repo.id" class="item-repo">
         <div>
-          <h2 class="repo-name">{{ repo.full_name }}</h2>
+          <h2 class="repo-name">{{ repo.name }}</h2>
           <p class="description">{{ repo.description }}</p>
           <span class="stars">{{ repo.stargazers_count }}</span>
         </div>
@@ -41,13 +41,14 @@
       </li>
     </ul>
     <div class="div-btn">
-      <button @click="loadMoreDataHandler" class="btn">Ver mais</button>
+      <button @click="$emit('loadMore')" class="btn">Ver mais</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  emits: ["loadMore"],
   name: "LayoutRepositories",
   props: ["repositoriesList"],
 };
