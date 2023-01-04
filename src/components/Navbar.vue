@@ -1,23 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/" id="logo-url">
-        <img :src="logo" :alt="alt" id="logo">
-    </router-link>
+    <nav>
+        <router-link to="/" id="logo-url">
+            <img :src="logo" :alt="alt" id="logo">
+        </router-link>
 
-    <router-link to="/">INÍCIO</router-link>
-    <router-link to="/favoritos">FAVORITOS</router-link>
-  </nav>
+        <router-link to="/">INÍCIO</router-link>
+        <router-link to="/favoritos">FAVORITOS</router-link>
+    </nav>
 </template>
-
+  
 <script>
-export default{
-    name:"Navbar",
-    props:["logo", "alt"]
+export default {
+    name: "Navbar",
+    props: ["logo", "alt"]
 }
 </script>
-
+  
 <style scoped>
-nav{
+nav {
     font-family: 'Inter';
     font-weight: 700;
     background: #D9D9D9;
@@ -28,23 +28,23 @@ nav{
     align-items: center;
 }
 
-#logo-url{
+#logo-url {
     margin: auto;
     margin-left: 0;
 }
 
-nav a{
+nav a {
     color: #000000;
     text-decoration: none;
     margin: 12px;
     transition: .5s;
 }
 
-nav a:hover{
+nav a:hover {
     color: white;
 }
-
 </style>
-
-
-
+  
+  
+  
+  

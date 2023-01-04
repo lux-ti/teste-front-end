@@ -1,16 +1,20 @@
 <template>
   <div class="main-container">
-    <img src="/img/Vector.png" alt="Logo GitHub">      
-    <Form />  
+
+    <img src="/img/VectorHome.png" alt="Logo GitHub">
+    <Form />
+
   </div>
 </template>
 
 <script>
 import Form from '../components/Form.vue'
 
-export default{
+
+export default {
   name: "HomeView",
-  components:{
+  components: {
+
     Form,
   }
 }
@@ -18,8 +22,7 @@ export default{
 </script>
 
 <style scoped>
-.main-container{
+.main-container {
   text-align: center;
 }
-
 </style>

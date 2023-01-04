@@ -1,33 +1,33 @@
 <template>
-    <button @click="pesquisa()" id="pessoa">Pessoa</button>
+  <button @click="pesquisa()" id="pessoa">Pessoa</button>
 </template>
 
 <script>
-export default{
-    name: 'SubmitUser',
-    props:{
-      entrada:{
-        type: String,
-      }
-    },
-    data (){
-      return{
-       
-      }
-    },
-    methods:{
-      async pesquisa(){
-        const user = this.entrada;
-        const reqUser = await fetch(`https://api.github.com/users/${user}`);
-        const data = await reqUser.json();
-        console.log(data);
-        }
+export default {
+  name: 'SubmitUser',
+  props: {
+    entrada: {
+      type: String,
     }
+  },
+  data() {
+    return {
+
+    }
+  },
+  methods: {
+    async pesquisa() {
+      const user = this.entrada;
+      const reqUser = await fetch(`https://api.github.com/users/${user}`);
+      const data = await reqUser.json();
+      console.log(data);
+    }
+  }
 }
 </script>
 
 <style scoped>
-button{
+button {
   font-family: 'Inter';
   font-weight: 700;
   size: 20px;
