@@ -1,32 +1,29 @@
 <template>
 
-  <div class="main-container">
-    <ul>
-      <li>
-        <UserCard />
-      </li>
-      <li>
-        <UserCard />
-      </li>
-      <li>
-        <UserCard />
-      </li>
-    </ul>
-  </div>
+<Suspense>
+  <!-- component with nested async dependencies -->
+  <UsersList :query=query />
+
+  <!-- loading state via #fallback slot -->
+  <template #fallback>
+    Loading...
+  </template>
+</Suspense>
 
 
 </template>
 
 <script>
-import UserCard from '../components/UserCard.vue'
-
+import UsersList from '../components/UsersList.vue'
 
 export default {
   name: 'Users',
+  props:{
+    query:String,
+  },
   components: {
-    UserCard
-  }
-
+   UsersList,
+  },
 }
 </script>
 

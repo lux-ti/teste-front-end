@@ -8,13 +8,13 @@
 
     <ul>
       <li>
-        <RepCard />
+        <RepCard titulo="Título Repositório teste1" descricao="Descrição teste1" stars="5"/>
       </li>
       <li>
-        <RepCard />
+        <RepCard titulo="Título Repositório teste2" descricao="Descrição teste2" stars="6"/>
       </li>
       <li>
-        <RepCard />
+        <RepCard titulo="Título Repositório teste3" descricao="Descrição teste3" stars="7"/>
       </li>
     </ul>
   </div>

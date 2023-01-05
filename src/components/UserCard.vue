@@ -4,27 +4,20 @@
         <router-link to="/usuarioselecionado">
             <div class="container-user">
                 <div class="container-user-img">
-                    <img src="/img/perfil.png" alt="Logo GitHub">
-
-
+                    <img :src=imgUrl alt="Logo GitHub">
                 </div>
                 <div class="container-user-info">
-                    <h2>Lindemberg</h2>
-                    <p>Texto teste</p>
+                    <h2>{{name}}</h2>
+                    <p>{{bio}}</p>
 
 
                     <div class="container-user-star">
                         <img src="/img/star.png" alt="Logo GitHub" class="star">
-                        <p>0</p>
+                        <p>{{stars}}</p>
                     </div>
                 </div>
             </div>
         </router-link>
-
-
-
-
-
     </div>
 </template>
 
@@ -32,6 +25,15 @@
 
 export default {
     name: 'UserCard',
+    props:{
+        name: String,
+        bio: String,
+        imgUrl: String,
+        stars: {
+            type: Number,
+            default: 0
+        },
+    },
     data() {
         return {
 

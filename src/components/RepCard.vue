@@ -2,13 +2,12 @@
 
     <div class="main-container-repo">
         <div class="container-repo-info">
-            <h2>Angular-AdminLTE</h2>
-            <p>AngularjsApp Implementation on top of renowned Admin-LTE theme
-                (https://github.com/almasaeed2010/AdminLTE) now with many useful directives and features.</p>
+            <h2>{{ titulo }}</h2>
+            <p>{{ descricao }}</p>
 
             <div class="container-repo-star">
                 <img src="/img/star.png" alt="Logo GitHub" class="star">
-                <p>200</p>
+                <p>{{ stars }}</p>
             </div>
         </div>
     </div>
@@ -19,6 +18,11 @@
 <script>
 export default {
     name: 'RepCard',
+    props:{
+        titulo: String,
+        descricao: String,
+        stars: Number
+    },
     data() {
         return {
 

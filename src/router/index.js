@@ -17,6 +17,7 @@ const routes = [
   {
     path: "/usuarios",
     name: "Users",
+    props: route => ({ query: route.query.q }),
 
     component: () =>
       import(/* webpackChunkName: "favoritos" */ "../views/Users.vue"),

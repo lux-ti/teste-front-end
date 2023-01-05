@@ -14,16 +14,17 @@
             <div>
                 <input v-model="entrada" class="home-search" placeholder="Buscar...">
             </div>
-
         </form>
 
     </div>
 </template>
 
 <script>
+
 import InputTextVue from './Form/InputText.vue';
 import SubmitRepVue from './Form/SubmitRep.vue';
 import SubmitUserVue from './Form/SubmitUser.vue';
+
 export default {
     name: 'Form',
     components: {
@@ -31,15 +32,20 @@ export default {
         SubmitRepVue,
         SubmitUserVue
     },
-    data() {
+    data(props) {
+        console.log({bla:this, props})
         return {
             entrada: this.entrada,
+            q: `dsdfsdsfd${this.entrada}`,
         }
     },
     methods: {
         enviarFormulario(e) { // O 'e' está relacionado ao '$event' do form, e nos permite acessar a função preventDefault
             e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
+        
+        
         }
+
     }
 }
 </script>
