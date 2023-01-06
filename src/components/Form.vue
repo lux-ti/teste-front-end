@@ -3,16 +3,12 @@
         <!-- <form action="" @submit="enviarFormulario($event)"> -->
 
             <div class="home-botao">
-                <router-link to="/repositorios">
-                    <SubmitRepVue :entrada="entrada" />
-                </router-link>
-                <router-link to="/usuarios">
-                    <SubmitUserVue :entrada="entrada" />
-                </router-link>
+                <button @click="enviarFormulario2($event)" id="pessoa">Repositório</button>
+                <button @click="enviarFormulario($event)" id="pessoa">Pessoa</button>
             </div>
 
             <div>
-                <input v-on:keyup.enter="enviarFormulario($event)" v-on:keyup.page-down="enviarFormulario2($event)" v-model="entrada" class="home-search" placeholder="Buscar...">
+                <input v-model="entrada" class="home-search" placeholder="Buscar...">
             </div>
         <!-- </form> -->
 
@@ -21,16 +17,16 @@
 
 <script>
 
-import InputTextVue from './Form/InputText.vue';
-import SubmitRepVue from './Form/SubmitRep.vue';
-import SubmitUserVue from './Form/SubmitUser.vue';
+//import InputTextVue from './Form/InputText.vue';
+//import SubmitRepVue from './Form/SubmitRep.vue';
+//import SubmitUserVue from './Form/SubmitUser.vue';
 
 export default {
     name: 'Form',
     components: {
-        InputTextVue,
-        SubmitRepVue,
-        SubmitUserVue
+       // InputTextVue,
+       // SubmitRepVue,
+       // SubmitUserVue
     },
     data(props) {
         console.log({bla:this, props})
@@ -85,5 +81,26 @@ export default {
     background: url("/public/img/search.png") no-repeat;
     background-size: contain;
     background-position-x: right;
+}
+
+button {
+  font-family: 'Inter';
+  font-weight: 700;
+  size: 20px;
+  color: #000000;
+  width: 186px;
+  height: 51px;
+  left: 518px;
+  top: 379px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border-color: #000000;
+  margin-inline: 20.5px;
+  transition: 0.5s;
+}
+
+button:hover{
+    background-color: #000000;
+    color: #FFFFFF; 
 }
 </style>

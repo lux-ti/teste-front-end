@@ -4,10 +4,6 @@
 </template>
 
 <script>
-
-// como exportar funcoes especificas
-
-
 export default {
   name: 'SubmitUser',
   props: {
@@ -20,15 +16,6 @@ export default {
 
     }
   },
-  methods: {
-  //async pesquisa() {
-  //const user = this.entrada;
-  //const reqUser = await fetch(`https://api.github.com/users/${user}`);
-  //const data = await reqUser.json();
-   //console.log(data);
-  //return data;
-//}
-}
 }
 </script>
 

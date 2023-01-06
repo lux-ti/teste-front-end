@@ -15,14 +15,6 @@ export default {
 
     }
   },
-  methods: {
-    async pesquisa() {
-      const rep = this.entrada;
-      const reqRep = await fetch(`https://api.github.com/search/repositories?q=${rep}`);
-      const data = await reqRep.json();
-      console.log(data);
-    }
-  }
 }
 </script>
 
