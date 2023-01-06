@@ -11,6 +11,7 @@ const useGetData = () => {
   const option = ref("");
   const dataItems = ref([]);
   const currentPage = ref(1);
+  const listHasFinished = ref(null);
 
   const fetchGithubHandler = async () => {
     const route = useRoute();
@@ -35,6 +36,11 @@ const useGetData = () => {
         return;
       }
       dataItems.value = data.value.items;
+
+      //verifica se não há mais itens para serem puxados da API.
+      if (dataItems.value.length === data.value.total_count) {
+        listHasFinished.value = true;
+      }
     }
   };
 
@@ -46,13 +52,24 @@ const useGetData = () => {
     );
 
     dataItems.value = [...dataItems.value, ...data.value.items];
+
+    //verifica se não há mais itens para serem puxados da API.
+    if (dataItems.value.length === data.value.total_count) {
+      listHasFinished.value = true;
+    }
   };
 
-  onMounted(async () => {
-    await fetchGithubHandler();
+  onMounted(() => {
+    fetchGithubHandler();
   });
 
-  return { error, loading, dataItems, loadMoreDataHandler, fetchGithubHandler };
+  return {
+    error,
+    loading,
+    dataItems,
+    listHasFinished,
+    loadMoreDataHandler,
+  };
 };
 
 export default useGetData;

@@ -150,8 +150,10 @@ form {
 .options label {
   border: 2px solid black;
   border-radius: 5px;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem;
+  width: 186px;
   cursor: pointer;
+  font-weight: 400;
 }
 
 .options label:first-of-type {

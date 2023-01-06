@@ -10,7 +10,7 @@
         <BtnFavoriteRepo :repo="repo" />
       </li>
     </ul>
-    <div class="div-btn">
+    <div class="div-btn" v-if="!listHasFinished">
       <button @click="$emit('loadMore')" class="btn">Ver mais</button>
     </div>
   </div>
@@ -22,7 +22,7 @@ import BtnFavoriteRepo from "./BtnFavoriteRepo.vue";
 export default {
   emits: ["loadMore"],
   name: "LayoutRepositories",
-  props: ["repositoriesList"],
+  props: ["repositoriesList", "listHasFinished"],
   components: { BtnFavoriteRepo },
 };
 </script>

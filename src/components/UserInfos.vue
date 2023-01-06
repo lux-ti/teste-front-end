@@ -1,6 +1,8 @@
 <template>
   <main>
     <div class="container">
+      <Loading v-if="loading" />
+      <p v-if="error">Ocorreu um erro. Tente novamente.</p>
       <section v-if="data" class="user-data">
         <div class="div-img">
           <img :src="data.avatar_url" :alt="data.login" />
@@ -24,6 +26,7 @@
 import useFetch from "../useFetch";
 import { GET_USER_INFOS } from "../api_links";
 import UserRepos from "./UserRepos.vue";
+import Loading from "../utilities/Loading.vue";
 
 export default {
   name: "UserInfos",
@@ -32,7 +35,7 @@ export default {
     const { data, loading, error, fetchData } = useFetch();
     return { data, loading, error, fetchData };
   },
-  components: { UserRepos },
+  components: { UserRepos, Loading },
   methods: {
     fetchUserInfos() {
       this.fetchData(GET_USER_INFOS(this.username));
@@ -48,6 +51,7 @@ export default {
 .container {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
 }
 .user-data {
   padding: 1rem;

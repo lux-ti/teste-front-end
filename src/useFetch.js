@@ -35,6 +35,7 @@ const useFetch = () => {
       .catch((err) => {
         console.log(err);
         error.value = true;
+        data.value = null;
       })
       .finally(() => {
         loading.value = false;

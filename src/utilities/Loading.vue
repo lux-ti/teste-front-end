@@ -16,6 +16,7 @@ export default {
   border: 6px solid var(--black);
   border-top-color: var(--white);
   animation: rotate 1s linear forwards infinite;
+  margin: auto;
 }
 
 @keyframes rotate {

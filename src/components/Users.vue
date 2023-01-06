@@ -1,18 +1,22 @@
 <template>
   <main>
     <div class="container">
-      <div>
-        <ul v-if="dataItems.length !== 0">
-          <UserItem
-            v-for="user in dataItems"
-            :key="user.id"
-            :userLogin="user.login"
-            :userImgUrl="user.avatar_url"
-          />
+      <!-- apenas aparece o comp. "Loading" no primeiro fetch-->
+      <Loading v-if="loading && !dataItems.length" />
+      <p v-if="error">Ocorreu um erro. Tente novamente.</p>
+      <div v-if="dataItems.length">
+        <ul>
+          <li v-for="user in dataItems" :key="user.id" class="user-item">
+            <router-link :to="`/user/${user.login}`" class="user-link">
+              <div class="img-profile">
+                <img :src="user.avatar_url" :alt="user.login" />
+              </div>
+              <p class="username">{{ user.login }}</p>
+            </router-link>
+          </li>
         </ul>
 
-        <Loading v-if="loading" />
-        <div class="div-btn">
+        <div class="div-btn" v-if="dataItems.length && !listHasFinished">
           <button @click="loadMoreDataHandler" class="btn">Ver mais</button>
         </div>
       </div>
@@ -23,25 +27,59 @@
 <script>
 import useGetData from "../useGetData";
 import Loading from "../utilities/Loading.vue";
-import UserItem from "./UserItem.vue";
 
 export default {
   name: "Users",
-  components: { Loading, UserItem },
+  components: { Loading },
   setup() {
-    const { loadMoreDataHandler, dataItems, loading } = useGetData();
+    const { loadMoreDataHandler, dataItems, loading, error, listHasFinished } =
+      useGetData();
 
-    return { loadMoreDataHandler, dataItems, loading };
+    return { loadMoreDataHandler, dataItems, loading, error, listHasFinished };
   },
 };
 </script>
 
 <style scoped>
-.container {
-  display: grid;
-}
-
 .div-btn {
   text-align: center;
+}
+
+.img-profile {
+  width: 144px;
+  height: 144px;
+}
+
+.img-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: drop-shadow(0px 0px 4px #000000);
+  border-radius: 5px;
+}
+
+.user-item {
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.user-link {
+  display: flex;
+}
+
+.user-item + .user-item {
+  margin-top: 2.5rem;
+}
+
+.username {
+  font-weight: 300;
+  font-size: 36px;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+.content {
+  width: 100%;
 }
 </style>
