@@ -57,7 +57,7 @@
       </form>
     </div>
   </main>
-  <ErrorSearchModal v-if="error" @onClose="closeErrorModal" />
+  <ErrorSearchModal v-if="isErrorModalShown" @onClose="closeErrorModal" />
 </template>
 
 <script>
@@ -71,9 +71,9 @@ export default {
   name: "Home",
   components: { ErrorSearchModal, Loading },
   setup() {
-    const { data, loading, error, fetchData } = useFetch();
+    const { data, loading, error, fetchData, resetStates } = useFetch();
 
-    return { error, data, loading, fetchData };
+    return { error, data, loading, fetchData, resetStates };
   },
   data() {
     return {
@@ -96,7 +96,16 @@ export default {
       }
     },
     closeErrorModal() {
-      this.error = false;
+      this.resetStates();
+    },
+  },
+  computed: {
+    isErrorModalShown() {
+      if (this.error || (this.data && this.data.total_count === 0)) {
+        return true;
+      }
+
+      return false;
     },
   },
 };

@@ -4,7 +4,9 @@
       <li v-for="repo in repositoriesList" :key="repo.id" class="item-repo">
         <div>
           <h2 class="repo-name">{{ repo.name }}</h2>
-          <p class="description">{{ repo.description }}</p>
+          <p class="description" v-if="repo.description">
+            {{ repo.description }}
+          </p>
           <span class="stars">{{ repo.stargazers_count }}</span>
         </div>
         <BtnFavoriteRepo :repo="repo" />
@@ -32,11 +34,12 @@ export default {
   font-weight: 300;
   color: var(--gray-2);
   font-size: 24px;
-  margin: 0.7rem 0;
+  margin-bottom: 0.7rem;
 }
 .repo-name {
   font-weight: 400;
   font-size: 36px;
+  margin-bottom: 0.7rem;
 }
 
 .item-repo {

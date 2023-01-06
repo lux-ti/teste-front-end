@@ -3,6 +3,7 @@
     <div class="container">
       <!-- apenas aparece o comp. "Loading" no primeiro fetch-->
       <Loading v-if="loading && !dataItems.length" />
+      <Error v-if="!loading && !dataItems.length" :value="userValue" />
       <p v-if="error">Ocorreu um erro. Tente novamente.</p>
       <div v-if="dataItems.length">
         <ul>
@@ -26,16 +27,22 @@
 
 <script>
 import useGetData from "../useGetData";
+import Error from "../utilities/Error.vue";
 import Loading from "../utilities/Loading.vue";
 
 export default {
   name: "Users",
-  components: { Loading },
+  components: { Loading, Error },
   setup() {
     const { loadMoreDataHandler, dataItems, loading, error, listHasFinished } =
       useGetData();
 
     return { loadMoreDataHandler, dataItems, loading, error, listHasFinished };
+  },
+  computed: {
+    userValue() {
+      return this.$route.query.q;
+    },
   },
 };
 </script>

@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <Loading v-if="loading" />
-      <p v-if="error">Ocorreu um erro. Tente novamente.</p>
+      <p v-if="error">Usuário "{{ username }}" não encontrado.</p>
       <section v-if="data" class="user-data">
         <div class="div-img">
           <img :src="data.avatar_url" :alt="data.login" />

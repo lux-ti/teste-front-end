@@ -19,22 +19,14 @@ const useGetData = () => {
     query.value = route.query.q;
     option.value = route.name;
 
-    const backToHome = () =>
+    //se a query "q" não existir ou não possuir valor, a página é redirecionada a "home"
+    if (!query.value) {
       router.push({
         path: "/",
       });
-
-    //se a query "q" não existir ou não possuir valor, a página é redirecionada a "home"
-    if (!query.value) {
-      backToHome();
     } else {
       await fetchData(GET_REPOSITORIES_OR_USERS(query.value, option.value));
 
-      //se o total de itens puxados da API for igual a 0, a página é redirecionada a "home"
-      if (data.value.total_count === 0) {
-        backToHome();
-        return;
-      }
       dataItems.value = data.value.items;
 
       //verifica se não há mais itens para serem puxados da API.

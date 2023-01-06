@@ -19,18 +19,12 @@ const useFetch = () => {
               "Usuário excedeu o limite da taxa de requisições. Tente novamente em breve."
             );
           }
-          throw new Error("URL inválida");
+          throw new Error("Nenhum resultado encontrado");
         }
         return response.json();
       })
       .then((jsonData) => {
-        /* if (jsonData.total_count === 0) {
-          //se não forem retornados resultados:
-          throw new Error("Não há resultados para esta pesquisa");
-        } 
-        */
         data.value = jsonData;
-        error.value = false;
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +36,12 @@ const useFetch = () => {
       });
   };
 
-  return { data, loading, error, fetchData };
+  const resetStates = () => {
+    data.value = null;
+    error.value = false;
+  };
+
+  return { data, loading, error, fetchData, resetStates };
 };
 
 export default useFetch;
