@@ -1,5 +1,6 @@
 <template>
-  <button @click="pesquisa()" id="pessoa">Pessoa</button>
+  <button id="pessoa">Pessoa</button>
+  <!-- <button @click="pesquisa()" id="pessoa">Pessoa</button> -->
 </template>
 
 <script>
@@ -20,13 +21,13 @@ export default {
     }
   },
   methods: {
-  async pesquisa() {
-  const user = this.entrada;
-  const reqUser = await fetch(`https://api.github.com/users/${user}`);
-  const data = await reqUser.json();
-   console.log(data);
+  //async pesquisa() {
+  //const user = this.entrada;
+  //const reqUser = await fetch(`https://api.github.com/users/${user}`);
+  //const data = await reqUser.json();
+   //console.log(data);
   //return data;
-}
+//}
 }
 }
 </script>

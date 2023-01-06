@@ -25,7 +25,8 @@ const routes = [
   {
     path: "/repositorios",
     name: "Repos",
-
+    props: route => ({ query: route.query.q }),
+    
     component: () =>
       import(/* webpackChunkName: "favoritos" */ "../views/Repos.vue"),
   },

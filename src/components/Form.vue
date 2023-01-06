@@ -1,6 +1,6 @@
 <template>
     <div class="main-container">
-        <form action="" @submit="enviarFormulario($event)">
+        <!-- <form action="" @submit="enviarFormulario($event)"> -->
 
             <div class="home-botao">
                 <router-link to="/repositorios">
@@ -12,9 +12,9 @@
             </div>
 
             <div>
-                <input v-model="entrada" class="home-search" placeholder="Buscar...">
+                <input v-on:keyup.enter="enviarFormulario($event)" v-model="entrada" class="home-search" placeholder="Buscar...">
             </div>
-        </form>
+        <!-- </form> -->
 
     </div>
 </template>
@@ -35,15 +35,19 @@ export default {
     data(props) {
         console.log({bla:this, props})
         return {
-            entrada: this.entrada,
-            q: `dsdfsdsfd${this.entrada}`,
+            entrada: "",            
         }
     },
     methods: {
         enviarFormulario(e) { // O 'e' está relacionado ao '$event' do form, e nos permite acessar a função preventDefault
             e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
-        
-        
+            
+            const entrada = this.entrada;
+            
+            //console.log("Tecla enter apertada" + entrada)
+            //this.$router.push(`/usuarios?q=${entrada}` )
+            this.$router.push({ path: '/usuarios', query: { q: `${entrada}` } })
+                   
         }
 
     }

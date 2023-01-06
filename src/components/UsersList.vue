@@ -29,14 +29,14 @@ export default {
   components: {
     UserCard
   },
-  methods: {
-  async pesquisa(user) {
-  const reqUser = await fetch(`https://api.github.com/search/users?q=${user}`);
-  const data = await reqUser.json();
-  console.log(data);
-  return data.items;
-}
-}
+  //methods: {
+  //async pesquisa(user) {
+  //const reqUser = await fetch(`https://api.github.com/search/users?q=${user}`);
+  //const data = await reqUser.json();
+  //console.log(data);
+  //return data.items;
+//}
+//}
 }
 </script>
 
