@@ -12,7 +12,7 @@
             </div>
 
             <div>
-                <input v-on:keyup.enter="enviarFormulario($event)" v-model="entrada" class="home-search" placeholder="Buscar...">
+                <input v-on:keyup.enter="enviarFormulario($event)" v-on:keyup.page-down="enviarFormulario2($event)" v-model="entrada" class="home-search" placeholder="Buscar...">
             </div>
         <!-- </form> -->
 
@@ -48,9 +48,18 @@ export default {
             //this.$router.push(`/usuarios?q=${entrada}` )
             this.$router.push({ path: '/usuarios', query: { q: `${entrada}` } })
                    
-        }
+        },
 
+        enviarFormulario2(e) { // O 'e' está relacionado ao '$event' do form, e nos permite acessar a função preventDefault
+            e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
+            
+            const entrada = this.entrada;
+            
+            //console.log("Tecla enter apertada" + entrada)
+            //this.$router.push(`/usuarios?q=${entrada}` )
+            this.$router.push({ path: '/repositorios', query: { q: `${entrada}` } })
     }
+}
 }
 </script>
 

@@ -1,37 +1,28 @@
 <template>
 
-  <div class="main-container-repos">
-    <div class="repos-busca">
-      <input v-model="entrada" class="rep-search" placeholder="Buscar...">
-      <button type='submit'><img src="/img/searchw.png"></button>
-    </div>
-
-    <ul>
-      <li>
-        <RepCard titulo="Título Repositório teste1" descricao="Descrição teste1" stars="5"/>
-      </li>
-      <li>
-        <RepCard titulo="Título Repositório teste2" descricao="Descrição teste2" stars="6"/>
-      </li>
-      <li>
-        <RepCard titulo="Título Repositório teste3" descricao="Descrição teste3" stars="7"/>
-      </li>
-    </ul>
-  </div>
-
-
-</template>
-
+  <Suspense>
+    <!-- component with nested async dependencies -->
+    <ReposList :query=query />
+  
+    <!-- loading state via #fallback slot -->
+    <template #fallback>
+      Loading...
+    </template>
+  </Suspense>
+  
+  
+  </template>
 <script>
-import RepCard from '../components/RepCard.vue'
-
+import ReposList from '../components/ReposList.vue'
 
 export default {
   name: 'Repos',
+  props:{
+    query:String,
+  },
   components: {
-    RepCard,
-  }
-
+   ReposList,
+  },
 }
 </script>
 
