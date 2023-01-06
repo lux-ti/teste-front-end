@@ -1,4 +1,4 @@
-# Lux One - Teste Front-End
+# Lux One - Teste Front-End Vue.JS
 Esse projeto contém um arquivo README.md contendo todas as especificações para o teste de Front-end da Lux-One para nível Júnior.
 
 ## Proposta
