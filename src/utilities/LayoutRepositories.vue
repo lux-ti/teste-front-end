@@ -15,6 +15,7 @@
     <div class="div-btn" v-if="!listHasFinished">
       <button @click="$emit('loadMore')" class="btn">Ver mais</button>
     </div>
+    <p v-if="listHasFinished" class="no-more-results">Não há mais resultados</p>
   </div>
 </template>
 
@@ -72,5 +73,10 @@ export default {
   text-align: center;
   border-top: 1px solid var(--black);
   margin-top: 1rem;
+}
+
+.no-more-results {
+  text-align: center;
+  margin-top: 4rem;
 }
 </style>

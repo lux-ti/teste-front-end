@@ -59,6 +59,7 @@ const useGetData = () => {
     error,
     loading,
     dataItems,
+    data,
     listHasFinished,
     loadMoreDataHandler,
   };

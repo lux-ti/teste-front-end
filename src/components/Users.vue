@@ -3,7 +3,10 @@
     <div class="container">
       <!-- apenas aparece o comp. "Loading" no primeiro fetch-->
       <Loading v-if="loading && !dataItems.length" />
-      <Error v-if="!loading && !dataItems.length" :value="userValue" />
+      <Error
+        v-if="!loading && data && !dataItems.length && !error"
+        :value="userValue"
+      />
       <p v-if="error">Ocorreu um erro. Tente novamente.</p>
       <div v-if="dataItems.length">
         <ul>
@@ -20,6 +23,10 @@
         <div class="div-btn" v-if="dataItems.length && !listHasFinished">
           <button @click="loadMoreDataHandler" class="btn">Ver mais</button>
         </div>
+
+        <p v-if="listHasFinished" class="no-more-results">
+          Não há mais resultados
+        </p>
       </div>
     </div>
   </main>
@@ -34,10 +41,23 @@ export default {
   name: "Users",
   components: { Loading, Error },
   setup() {
-    const { loadMoreDataHandler, dataItems, loading, error, listHasFinished } =
-      useGetData();
+    const {
+      loadMoreDataHandler,
+      dataItems,
+      loading,
+      error,
+      data,
+      listHasFinished,
+    } = useGetData();
 
-    return { loadMoreDataHandler, dataItems, loading, error, listHasFinished };
+    return {
+      loadMoreDataHandler,
+      dataItems,
+      loading,
+      error,
+      data,
+      listHasFinished,
+    };
   },
   computed: {
     userValue() {
@@ -88,5 +108,9 @@ export default {
 
 .content {
   width: 100%;
+}
+.no-more-results {
+  text-align: center;
+  margin-top: 4rem;
 }
 </style>

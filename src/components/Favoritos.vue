@@ -5,7 +5,12 @@
       <p v-if="!favoritedRepositories.length">
         Não há repositórios favoritados.
       </p>
-      <LayoutRepositories v-else :repositoriesList="favoritedRepositories" />
+      <LayoutRepositories
+        v-else
+        :repositoriesList="repositoriesList"
+        @loadMore="loadMoreRepos"
+        :listHasFinished="listHasFinished"
+      />
     </div>
   </main>
 </template>
@@ -25,6 +30,29 @@ export default {
     return {
       favoritedRepositories,
     };
+  },
+  data() {
+    return {
+      currentPage: 1,
+    };
+  },
+  methods: {
+    loadMoreRepos() {
+      this.currentPage++;
+    },
+  },
+  computed: {
+    repositoriesList() {
+      if (this.favoritedRepositories)
+        return this.favoritedRepositories.slice(0, this.currentPage * 3);
+    },
+    listHasFinished() {
+      if (this.currentPage * 3 >= this.favoritedRepositories.length) {
+        return true;
+      }
+
+      return false;
+    },
   },
   components: { LayoutRepositories },
 };
