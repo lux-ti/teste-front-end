@@ -19,7 +19,7 @@
 
 <script>
 import { GET_USER_REPOSITORIES } from "../api_links";
-import useFetch from "../useFetch";
+import useFetch from "../hooks/useFetch";
 import LayoutRepositories from "../utilities/LayoutRepositories.vue";
 import Loading from "../utilities/Loading.vue";
 

@@ -1,7 +1,7 @@
 import { onMounted, ref } from "vue";
 import useFetch from "./useFetch";
-import { router } from "./routes";
-import { GET_REPOSITORIES_OR_USERS } from "./api_links";
+import { router } from "../routes";
+import { GET_REPOSITORIES_OR_USERS } from "../api_links";
 import { useRoute } from "vue-router";
 
 const useGetData = () => {

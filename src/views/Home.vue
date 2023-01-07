@@ -61,11 +61,11 @@
 </template>
 
 <script>
-import ErrorSearchModal from "./ErrorSearchModal.vue";
+import ErrorSearchModal from "../components/ErrorSearchModal.vue";
 import { GET_REPOSITORIES_OR_USERS } from "../api_links";
 import { router } from "../routes";
 import Loading from "../utilities/Loading.vue";
-import useFetch from "../useFetch";
+import useFetch from "../hooks/useFetch";
 
 export default {
   name: "Home",

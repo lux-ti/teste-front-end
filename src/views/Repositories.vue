@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import useGetData from "../useGetData";
+import useGetData from "../hooks/useGetData";
 import Error from "../utilities/Error.vue";
 import LayoutRepositories from "../utilities/LayoutRepositories.vue";
 import Loading from "../utilities/Loading.vue";

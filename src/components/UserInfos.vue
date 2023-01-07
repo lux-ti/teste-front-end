@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import useFetch from "../useFetch";
+import useFetch from "../hooks/useFetch";
 import { GET_USER_INFOS } from "../api_links";
 import UserRepos from "./UserRepos.vue";
 import Loading from "../utilities/Loading.vue";
