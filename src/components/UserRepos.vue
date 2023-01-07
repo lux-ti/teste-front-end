@@ -74,4 +74,12 @@ export default {
   flex: 1;
   margin-left: 5rem;
 }
+
+@media screen and (max-width: 1000px) {
+  .user-repos {
+    margin-left: 0;
+    margin-top: 2rem;
+    width: 100%;
+  }
+}
 </style>

@@ -58,4 +58,16 @@ export default {
 .menu .router-link-active {
   color: var(--red);
 }
+
+@media screen and (max-width: 500px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+  .search {
+    margin-left: 0.2rem;
+  }
+  .menu a + a {
+    margin-left: 0.5rem;
+  }
+}
 </style>

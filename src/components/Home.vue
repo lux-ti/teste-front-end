@@ -172,4 +172,13 @@ form {
   background: var(--black);
   color: var(--white);
 }
+
+@media screen and (max-width: 450px) {
+  .options label {
+    width: 150px;
+  }
+  .options label:first-of-type {
+    margin-right: 1rem;
+  }
+}
 </style>

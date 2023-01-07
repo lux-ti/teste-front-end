@@ -64,6 +64,7 @@ export default {
 .user-data h2 {
   font-weight: 300;
   font-size: 36px;
+  max-width: 300px;
 }
 
 .loginName {
@@ -93,5 +94,12 @@ export default {
   height: 100%;
   object-fit: cover;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>
