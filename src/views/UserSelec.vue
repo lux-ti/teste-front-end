@@ -1,25 +1,25 @@
 <template>
     <div class="main-container-userselec">
         <div class="perfil-user">
-            <img src="/img/perfil2.png" alt="Logo GitHub">
-            <h2>Lindemberg</h2>
-            <p>lindemberg</p>
+            <img :src=imgUrl alt="Logo GitHub">
+            <h2>{{name}}</h2>
+            <p>{{bio}}</p>
             <div class="perfil-user-details">
                 <div class="perfil-user-detail">
                     <img src="/img/icon.png" alt="Logo GitHub">
-                    <p>Lux One</p>
+                    <p>{{organization}}</p>
                 </div>
                 <div class="perfil-user-detail">
                     <img src="/img/location.png" alt="Logo GitHub">
-                    <p>Fortaleza, CE</p>
+                    <p>{{location}}</p>
                 </div>
                 <div class="perfil-user-detail">
                     <img src="/img/icon(1).png" alt="Logo GitHub">
-                    <p>4</p>
+                    <p>{{repository}}</p>
                 </div>
                 <div class="perfil-user-detail">
                     <img src="/img/followers.png" alt="Logo GitHub">
-                    <p>1</p>
+                    <p class="seguidor">{{followers}}</p>
                 </div>
             </div>
         </div>
@@ -35,6 +35,35 @@ import Repos from './Repos.vue'
 
 export default {
     name: 'UserSelec',
+    props:{
+        name: {
+            type: String,
+            default: "Sem nome"
+        },
+        imgUrl: {
+            type: String,
+            default: "/img/perfil2.png" 
+        },
+        bio: {
+            type: String,
+            default: "Sem descrição"},
+        organization:{
+            type: String,
+            default: "Sem informação"
+        },
+        location:{
+            type: String,
+            default: "Sem informação"
+        },
+        repository:{
+            type: Number,
+            default: 0
+        },
+        followers:{
+            type: Number,
+            default: 0
+        },        
+    },
     components: {
         Repos,
     }

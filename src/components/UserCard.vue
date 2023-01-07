@@ -11,10 +11,10 @@
                     <p>{{bio}}</p>
 
 
-                    <div class="container-user-star">
+                    <!-- <div class="container-user-star">
                         <img src="/img/star.png" alt="Logo GitHub" class="star">
                         <p>{{stars}}</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </router-link>
@@ -44,6 +44,12 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+.container-user img{
+    width: 144px;
+    height: 144px;
+    border-radius: 5px;
+}
 
 .main-container-user {
     margin: 50px;

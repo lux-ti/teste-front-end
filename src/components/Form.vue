@@ -29,7 +29,7 @@ export default {
        // SubmitUserVue
     },
     data(props) {
-        console.log({bla:this, props})
+       // console.log({bla:this, props})
         return {
             entrada: "",            
         }
@@ -39,10 +39,13 @@ export default {
             e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
             
             const entrada = this.entrada;
+
+            if(this.entrada != ""){
             
             //console.log("Tecla enter apertada" + entrada)
             //this.$router.push(`/usuarios?q=${entrada}` )
             this.$router.push({ path: '/usuarios', query: { q: `${entrada}` } })
+            }
                    
         },
 
@@ -50,11 +53,12 @@ export default {
             e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
             
             const entrada = this.entrada;
-            
+            if(this.entrada != ""){
             //console.log("Tecla enter apertada" + entrada)
-            //this.$router.push(`/usuarios?q=${entrada}` )
-            this.$router.push({ path: '/repositorios', query: { q: `${entrada}` } })
-    }
+            this.$router.push(`/repositorios?q=${entrada}` )
+            //this.$router.push({ path: '/repositorios', query: { q: `${entrada}` } })
+            }
+        }
 }
 }
 </script>
@@ -97,6 +101,7 @@ button {
   border-color: #000000;
   margin-inline: 20.5px;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 button:hover{
