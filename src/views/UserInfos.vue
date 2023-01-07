@@ -10,12 +10,18 @@
         <h2>{{ data.name }}</h2>
         <p class="loginName">{{ data.login }}</p>
 
-        <span aria-label="empresa atual">{{ data.company }}</span>
-        <span aria-label="localização">{{ data.location }}</span>
-        <span aria-label="total de repositórios públicos">{{
+        <span aria-label="empresa atual" class="company">{{
+          data.company
+        }}</span>
+        <span aria-label="localização" class="location">{{
+          data.location
+        }}</span>
+        <span aria-label="total de repositórios públicos" class="repo-total">{{
           data.public_repos
         }}</span>
-        <span aria-label="seguidores">{{ data.followers }}</span>
+        <span aria-label="seguidores" class="followers">{{
+          data.followers
+        }}</span>
       </section>
       <UserRepos v-if="data" :username="data.login" />
     </div>
@@ -78,6 +84,8 @@ export default {
 
 .user-data span {
   font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 .user-data span + span {
   margin-top: 1rem;
@@ -98,6 +106,31 @@ export default {
   height: 100%;
   object-fit: cover;
   border-radius: 5px;
+}
+
+.user-data span::before {
+  content: "";
+  background-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  margin-right: 1rem;
+}
+
+.company::before {
+  background-image: url("../assets/briefcase.svg");
+}
+
+.location::before {
+  background-image: url("../assets/geo.svg");
+}
+
+.followers::before {
+  background-image: url("../assets/people.svg");
+}
+
+.repo-total::before {
+  background-image: url("../assets/archive.svg");
 }
 
 @media screen and (max-width: 1000px) {

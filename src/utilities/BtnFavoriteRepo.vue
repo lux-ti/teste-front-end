@@ -7,6 +7,9 @@
         ? removeRepoFromFavorites(repo.id)
         : favoriteRepoHandler(repo)
     "
+    :title="
+      repoIsFavorited ? 'desmarcar como favorito' : 'marcar como favorito'
+    "
   >
     <svg
       width="42"

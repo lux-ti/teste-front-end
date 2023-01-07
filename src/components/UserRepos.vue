@@ -72,7 +72,7 @@ export default {
   display: grid;
   place-items: center;
   flex: 1;
-  margin-left: 5rem;
+  margin-left: 4rem;
 }
 
 @media screen and (max-width: 1000px) {

@@ -63,7 +63,7 @@ export default {
   content: "";
   width: 24px;
   height: 24px;
-  background: url("../assets/icon.svg");
+  background: url("../assets/star.svg");
   display: block;
   background-size: 24px;
   margin-right: 0.5rem;
