@@ -20,6 +20,7 @@
 
 <script>
 import useGetData from "../hooks/useGetData";
+import useHeadData from "../hooks/useHeadData";
 import Error from "../utilities/Error.vue";
 import LayoutRepositories from "../utilities/LayoutRepositories.vue";
 import Loading from "../utilities/Loading.vue";
@@ -36,6 +37,8 @@ export default {
       data,
       listHasFinished,
     } = useGetData();
+
+    useHeadData("Repositórios", "Resulta de busca de repositórios.");
 
     return {
       loadMoreDataHandler,

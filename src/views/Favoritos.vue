@@ -17,6 +17,7 @@
 
 <script>
 import { computed } from "vue";
+import useHeadData from "../hooks/useHeadData";
 import store from "../storeFavorites";
 import LayoutRepositories from "../utilities/LayoutRepositories.vue";
 
@@ -26,7 +27,7 @@ export default {
     const favoritedRepositories = computed(
       () => store.state.favoritedRepositories
     );
-
+    useHeadData("Favoritos", "Seus repositórios favoritados.");
     return {
       favoritedRepositories,
     };

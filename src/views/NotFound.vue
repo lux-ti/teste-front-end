@@ -21,8 +21,13 @@
 </template>
 
 <script>
+import useHeadData from "../hooks/useHeadData";
+
 export default {
   name: "NotFound",
+  setup() {
+    useHeadData("404", "Página inexistente.");
+  },
 };
 </script>
 

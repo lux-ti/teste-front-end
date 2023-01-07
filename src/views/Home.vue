@@ -66,12 +66,15 @@ import { GET_REPOSITORIES_OR_USERS } from "../api_links";
 import { router } from "../routes";
 import Loading from "../utilities/Loading.vue";
 import useFetch from "../hooks/useFetch";
+import useHeadData from "../hooks/useHeadData";
 
 export default {
   name: "Home",
   components: { ErrorSearchModal, Loading },
   setup() {
     const { data, loading, error, fetchData, resetStates } = useFetch();
+
+    useHeadData("Home", "Procure por um usuário ou repositório do GitHub.");
 
     return { error, data, loading, fetchData, resetStates };
   },

@@ -34,6 +34,7 @@
 
 <script>
 import useGetData from "../hooks/useGetData";
+import useHeadData from "../hooks/useHeadData";
 import Error from "../utilities/Error.vue";
 import Loading from "../utilities/Loading.vue";
 
@@ -49,6 +50,8 @@ export default {
       data,
       listHasFinished,
     } = useGetData();
+
+    useHeadData("Usuários", "Resulta de busca de usuários.");
 
     return {
       loadMoreDataHandler,

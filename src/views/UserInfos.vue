@@ -25,14 +25,18 @@
 <script>
 import useFetch from "../hooks/useFetch";
 import { GET_USER_INFOS } from "../api_links";
-import UserRepos from "./UserRepos.vue";
+import UserRepos from "../components/UserRepos.vue";
 import Loading from "../utilities/Loading.vue";
+import useHeadData from "../hooks/useHeadData";
 
 export default {
   name: "UserInfos",
   props: ["username"],
-  setup() {
+  setup(props) {
     const { data, loading, error, fetchData } = useFetch();
+
+    useHeadData(props.username, "Informações de usuário");
+
     return { data, loading, error, fetchData };
   },
   components: { UserRepos, Loading },
