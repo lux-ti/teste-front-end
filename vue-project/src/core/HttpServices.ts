@@ -2,7 +2,6 @@ import axios from "axios";
 
 class HttpServices {
   private defaultUrl = "";
-  private slug = "";
 
   public constructor(defaultUrl = "https://api.github.com/") {
     this.defaultUrl = defaultUrl;

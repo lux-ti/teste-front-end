@@ -3,13 +3,15 @@ import { reactive, toRefs } from "vue";
 import InputCustom from "@/components/Inputs/InputCustom.vue";
 import TypeButtons from "./Components/TypeButtons.vue";
 import HttpService from '@/core/HttpServices'
+import { useModal } from '@/stores/modal';
+
+const store = useModal();
 
 const service = new HttpService();
 
 const data = reactive({
   searchData: "" as string,
   currentType: true as boolean,
-  showModal: false
 });
 
 const { searchData, currentType } = toRefs(data);
@@ -22,10 +24,10 @@ async function sendDataToSearch() {
     });
 
     if(!result.data.length) {
-      throw new Error("Ocorreu u merro");
+      throw new Error("");
     }
   }catch(e) {
-    data.showModal = true
+    store.actionModal(true);
   }
 }
 </script>
