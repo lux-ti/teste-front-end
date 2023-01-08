@@ -13,7 +13,6 @@
   <p v-else-if="message === 'Ocorreu um erro ao realizar a pesquisa'">
     Ocorreu um erro
   </p>
-  
 
   <div class="info" v-if="items.length > 0">
     <ul>
@@ -23,12 +22,13 @@
             'https://github.com/' + item.owner.login + '/' + item.name + ''
           "
         >
-          <p class="title">{{ item.name }}</p>
+          <div class="to_favorite">
+            <p class="title">{{ item.name }}</p>
+            <img src="../assets/star.svg" alt="" />
+          </div>
           <p class="description">{{ item.description }}</p>
           <div class="star_count">
-          <img  src="../assets/star.svg" alt="" />{{
-            item.stargazers_count
-          }}
+            <img src="../assets/star.svg" alt="" />{{ item.stargazers_count }}
           </div>
         </a>
       </li>
@@ -82,7 +82,7 @@ export default {
   font-family: "Rubik", sans-serif;
 }
 
-img{
+img {
   margin-right: 7px;
 }
 .title {
@@ -108,6 +108,11 @@ img{
   border-bottom: 1px solid;
   padding-bottom: 22px;
   margin-bottom: 11px;
+}
+
+.to_favorite{
+  display: flex;
+  justify-content: space-between;
 }
 .bts {
   display: flex;
