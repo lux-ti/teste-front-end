@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
 import setup from "./setupComposable/setup";
 import commonProps from "./props/commonProps";
 
@@ -9,11 +8,11 @@ const { onInput } = setup(emit);
 </script>
 
 <template>
-    <input
-      class="form-control"
-      type="text"
-      :value="modelValue"
-      v-bind="$attrs"
-      @input="onInput"
-    />
+  <input
+    class="input-custom"
+    type="text"
+    :value="modelValue"
+    v-bind="$attrs"
+    @input="onInput"
+  />
 </template>
