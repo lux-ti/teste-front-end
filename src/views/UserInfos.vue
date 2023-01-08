@@ -10,10 +10,10 @@
         <h2>{{ data.name }}</h2>
         <p class="loginName">{{ data.login }}</p>
 
-        <span aria-label="empresa atual" class="company">{{
+        <span aria-label="empresa atual" class="company" v-if="data.company">{{
           data.company
         }}</span>
-        <span aria-label="localização" class="location">{{
+        <span aria-label="localização" class="location" v-if="data.location">{{
           data.location
         }}</span>
         <span aria-label="total de repositórios públicos" class="repo-total">{{
@@ -23,7 +23,11 @@
           data.followers
         }}</span>
       </section>
-      <UserRepos v-if="data" :username="data.login" />
+      <UserRepos
+        v-if="data"
+        :username="data.login"
+        :totalUserRepos="data.public_repos"
+      />
     </div>
   </main>
 </template>
@@ -86,6 +90,7 @@ export default {
   font-size: 20px;
   display: flex;
   align-items: center;
+  max-width: 300px;
 }
 .user-data span + span {
   margin-top: 1rem;
@@ -110,9 +115,11 @@ export default {
 
 .user-data span::before {
   content: "";
-  background-size: 1.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  background-size: 1.4rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1.6rem;
+  height: 1.6rem;
   display: block;
   margin-right: 1rem;
 }

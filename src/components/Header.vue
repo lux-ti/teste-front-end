@@ -1,10 +1,12 @@
 <template>
   <header class="header">
     <div class="container">
-      <router-link to="/" class="logo">
-        <span class="github">GitHub</span>
-        <span class="search">Search</span>
-      </router-link>
+      <h1>
+        <router-link to="/" class="logo">
+          <span class="github">GitHub</span>
+          <span class="search">Search</span>
+        </router-link>
+      </h1>
       <nav class="menu">
         <router-link to="/">Inicío</router-link>
         <router-link to="/favoritos">Favoritos</router-link>
@@ -30,6 +32,10 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 84px;
+}
+
+h1 {
+  font-weight: 400;
 }
 
 .logo {

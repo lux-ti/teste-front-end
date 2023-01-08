@@ -52,6 +52,7 @@ export default {
     };
   },
   methods: {
+    //adiciona o repositório ao global state.
     favoriteRepoHandler(repoObj) {
       const newRepo = {
         name: repoObj.name,

@@ -1,16 +1,16 @@
 <template>
   <div class="user-repos">
-    <Loading v-if="loading" />
+    <Loading v-if="loading && !listRepos.length" />
     <p v-if="error">Ocorreu um erro. Tente novamente.</p>
     <div class="content">
       <LayoutRepositories
-        v-if="data && data.length"
-        :repositoriesList="repositoriesList"
+        v-if="listRepos.length"
+        :repositoriesList="listRepos"
         @loadMore="loadMoreRepos"
         :listHasFinished="listHasFinished"
         class="repos-user"
       />
-      <p v-if="data && !data.length" class="no-repos">
+      <p v-if="!totalUserRepos" class="no-repos">
         Este usuário não possui repositórios.
       </p>
     </div>
@@ -25,10 +25,11 @@ import Loading from "../utilities/Loading.vue";
 
 export default {
   name: "UserRepos",
-  props: ["username"],
+  props: ["username", "totalUserRepos"],
   data() {
     return {
       currentPage: 1,
+      listRepos: [],
     };
   },
   setup() {
@@ -36,28 +37,32 @@ export default {
     return { data, loading, error, fetchData };
   },
   methods: {
-    fetchUserInfos() {
-      this.fetchData(GET_USER_REPOSITORIES(this.username));
-    },
     loadMoreRepos() {
       this.currentPage++;
+
+      this.fetchRepos();
+    },
+    async fetchRepos() {
+      await this.fetchData(this.urlFetch);
+      this.listRepos = [...this.listRepos, ...this.data];
     },
   },
+
   computed: {
-    repositoriesList() {
-      if (this.data) return this.data.slice(0, this.currentPage * 3);
+    urlFetch() {
+      return GET_USER_REPOSITORIES(this.username, this.currentPage);
     },
     listHasFinished() {
       if (this.data) {
-        if (this.currentPage * 3 >= this.data.length) {
+        if (this.listRepos.length === this.totalUserRepos) {
           return true;
         }
+        return false;
       }
-      return false;
     },
   },
   mounted() {
-    this.fetchUserInfos();
+    this.fetchRepos();
   },
   components: { LayoutRepositories, Loading },
 };

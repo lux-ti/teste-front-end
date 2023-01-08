@@ -19,7 +19,7 @@ const useFetch = () => {
               "Usuário excedeu o limite da taxa de requisições. Tente novamente em breve."
             );
           }
-          throw new Error("Nenhum resultado encontrado");
+          throw new Error("Nenhum resultado encontrado/URL inválida");
         }
         return response.json();
       })
