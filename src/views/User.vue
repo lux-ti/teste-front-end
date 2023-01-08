@@ -1,19 +1,17 @@
 <template>
+
   <section>
     <div class="info">
-      <img width="150" v-bind:src="item.avatar_url" />
-      <h1><span class="material-icons">face</span> {{ item.name }}</h1>
-      <h2><span class="material-icons">person</span> {{ item.login }}</h2>
-      <h2>
-        <span class="material-icons">location_on</span> {{ item.location }}
-      </h2>
-      <h2><span class="material-icons">work</span> {{ item.public_repos }}</h2>
-      <h2><span class="material-icons">groups</span> {{ item.followers }}</h2>
+      <img width="150" v-bind:src="item.avatar_url" >
+      <h1><span class="material-icons">face</span> {{item.name}}</h1>
+      <h2><span class="material-icons">person</span> {{item.login}}</h2>
+      <h2><span class="material-icons">location_on</span> {{item.location}}</h2>
+      <h2><span class="material-icons">work</span> {{item.public_repos}}</h2>
+      <h2><span class="material-icons">groups</span> {{item.followers}}</h2>
     </div>
     <div class="repositories">
       <div v-for="repositorio in repositorios" :key="repositorio.id">
-        <h1>{{ repositorio.name }}</h1>
-        <h2 class="description">{{ repositorio.description }}</h2>
+        <h1>{{repositorio.name}}</h1>
         <h2 class="numberstars">
           <img class="star" src="../assets/star.svg" alt="" />{{
             repositorio.stargazers_count
@@ -22,60 +20,56 @@
       </div>
     </div>
   </section>
+
 </template>
 
 <script>
-import axios from "axios";
 
-export default {
-  data() {
-    return {
-      url_foto: "https://avatars.githubusercontent.com/u/95485809?v=4",
-      item: [
-        { avatar_url: "teste", login: "teste" },
-        { avatar_url: "teste2", login: "teste2" },
-      ],
-      repositorios: [
-        {
-          id: 1,
-          name: "nome do repositorio",
-          description: "ok",
-          stargazers_count: 1,
-        },
-      ],
-      message: "Testando",
-    };
-  },
-  created() {
-    this.usuario();
-    this.repositories();
-  },
-  methods: {
-    usuario() {
-      let name = this.$route.query.name || "maria";
-      axios(`https://api.github.com/users/${name}`).then((e) => {
-        this.item = e.data;
-      });
+  // https://api.github.com/users/mariaccarolina
+  // https://api.github.com/users/mariaccarolina/repos
+
+  import axios from 'axios'
+
+  export default {
+    data(){
+      return {
+        url_foto: "https://avatars.githubusercontent.com/u/95485809?v=4",
+        item: [{avatar_url:"teste", login:"teste"}, {avatar_url:"teste2", login:"teste2"}],
+        repositorios: [{id:1, name:'nome do repositorio',description:"ok",stargazers_count:1}],
+        message: "Testando",
+      }
     },
-    repositories() {
-      let name = this.$route.query.name || "maria";
-      axios(`https://api.github.com/users/${name}/repos`).then((e) => {
-        this.repositorios = e.data;
+    created(){
+      this.usuario()
+      this.repositories()
+    },
+    methods:{
+      usuario () {
+        let name = this.$route.query.name || "maria" 
+        axios(`https://api.github.com/users/${name}`).then(e=>{
+          this.item = e.data
+        })
+      },
+      repositories(){
+        let name = this.$route.query.name || "maria" 
+        axios(`https://api.github.com/users/${name}/repos`).then(e=>{
+          this.repositorios = e.data
+          // console.log('ok')
+        })
         // console.log('ok')
-      });
-      // console.log('ok')
-    },
-  },
-};
+      }
+    }
+  }
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900");
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
 
-* {
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+  @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700");
+
+  * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
@@ -112,8 +106,8 @@ h2 {
   gap: 10px;
   border-radius: 5px;
   height: 644px;
-  width: 340px;
   align-content: flex-start;
+  position: sticky;
   background-color: #d9d9d9;
 }
 img {
@@ -137,7 +131,7 @@ img {
 }
 
 .repositories {
- margin: 70px;
+  display: grid;
 }
 
 .repositories div {
