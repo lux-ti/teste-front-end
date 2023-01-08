@@ -114,7 +114,6 @@ h2 {
   height: 644px;
   width: 340px;
   align-content: flex-start;
- 
   background-color: #d9d9d9;
 }
 img {

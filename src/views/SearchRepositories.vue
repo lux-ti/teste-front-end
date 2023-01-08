@@ -4,8 +4,6 @@
     <button>Anterior</button>
   </div>
 
-  <h1>Resultado de busca</h1>
-
   <p
     v-bind:class="{ 'class-name': message }"
     v-if="message === 'Não foram encontrados resultados para a pesquisa'"
@@ -15,18 +13,24 @@
   <p v-else-if="message === 'Ocorreu um erro ao realizar a pesquisa'">
     Ocorreu um erro
   </p>
-  <p v-else>{{ message }}</p>
+  
 
-  <div v-if="items.length > 0">
+  <div class="info" v-if="items.length > 0">
     <ul>
       <li v-for="item in items" :key="item.id">
         <a
           v-bind:href="
             'https://github.com/' + item.owner.login + '/' + item.name + ''
           "
-          ><img width="100" v-bind:src="item.owner.avatar_url"
-        /></a>
-        <p>{{ item.name }}</p>
+        >
+          <p class="title">{{ item.name }}</p>
+          <p class="description">{{ item.description }}</p>
+          <div class="star_count">
+          <img  src="../assets/star.svg" alt="" />{{
+            item.stargazers_count
+          }}
+          </div>
+        </a>
       </li>
     </ul>
   </div>
@@ -75,46 +79,36 @@ export default {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
 }
 
-h1 {
-  padding: 1em;
-  text-align: center;
+img{
+  margin-right: 7px;
+}
+.title {
+  font-size: 36px;
+  font-weight: 400;
 }
 
-ul {
+.description {
+  font-size: 24px;
+  font-weight: 300;
+  color: #757575;
   display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  padding: 1em;
-  text-align: center;
-  justify-content: center;
+  margin-top: 10px;
 }
 
-li {
-  box-shadow: 3px 3px 10px #00000055;
-  border-radius: 5px;
-  flex: 150px;
-  display: grid;
-  max-width: 150px;
-  overflow: hidden;
-  transition: 0.2s;
+.info {
+  padding: 63px;
 }
 
-li:hover {
-  translate: 0 -10px;
-  transition: 0.2s;
+.star_count {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid;
+  padding-bottom: 22px;
+  margin-bottom: 11px;
 }
-
-li img {
-  width: 150px;
-}
-
-li p {
-  padding: 10px;
-  text-align: center;
-}
-
 .bts {
   display: flex;
   justify-content: center;
