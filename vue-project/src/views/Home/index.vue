@@ -1,31 +1,41 @@
 <script setup lang="ts">
 import { reactive, toRefs } from "vue";
+import { useRouter } from "vue-router";
 import InputCustom from "@/components/Inputs/InputCustom.vue";
 import TypeButtons from "./Components/TypeButtons.vue";
 import HttpService from '@/core/HttpServices'
 import { useModal } from '@/stores/modal';
+import { typeSearch } from "@/stores/typeSearch";
 
+const currentType = typeSearch();
 const store = useModal();
+const router = useRouter();
 
 const service = new HttpService();
 
 const data = reactive({
   searchData: "" as string,
-  currentType: true as boolean,
 });
 
-const { searchData, currentType } = toRefs(data);
+const { searchData } = toRefs(data);
 
 async function sendDataToSearch() {
   try {
-    const result = await service.searchList(data.currentType, {
+    const result = await service.searchList(currentType.getCurrentType, {
       q: data.searchData,
       page: 1
     });
 
-    if(!result.data.length) {
+    if(!result.data.items.length) {
       throw new Error("");
     }
+
+    currentType.setSearchData(data.searchData);
+
+    currentType[currentType.getCurrentType ? 'setRepository': 'setUsers'](result.data.items);
+
+    return router.push({path:currentType.getCurrentType ? 'repositories': 'users'});
+
   }catch(e) {
     store.actionModal(true);
   }
@@ -35,7 +45,7 @@ async function sendDataToSearch() {
 <template>
   <div class="home-page">
     <img src="@/assets/img/LogoGithub.png" alt="Logo Github" />
-    <TypeButtons @change-type="(value) => (currentType = value)" />
+    <TypeButtons />
     <div class="search">
       <InputCustom
         v-model="searchData"

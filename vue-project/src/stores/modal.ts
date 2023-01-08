@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useModal = defineStore({
   id: "modal",
   state: () => ({
-    showingModal: true as boolean,
+    showingModal: false as boolean,
   }),
   actions: {
     actionModal(value: boolean) {

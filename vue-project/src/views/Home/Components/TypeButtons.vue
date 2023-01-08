@@ -1,30 +1,26 @@
 <script setup lang="ts">
-import { reactive, toRefs, watch } from "vue";
+import { typeSearch } from "@/stores/typeSearch";
 
-const data = reactive({
-  currentType: true as boolean,
-});
+const store = typeSearch()
 
-const { currentType } = toRefs(data);
+function changeType(value: boolean) {
+  store.changeType(value)
+}
 
-const emit = defineEmits(["changeType"]);
 
-watch(currentType, (current) => {
-  emit("changeType", current);
-});
 </script>
 
 <template>
   <div class="buttons">
     <button
-      @click="currentType = true"
-      :class="{ 'button-inactive': !currentType }"
+      @click="changeType(true)"
+      :class="{ 'button-inactive': !store.getCurrentType }"
     >
       Repositório
     </button>
     <button
-      @click="currentType = false"
-      :class="{ 'button-inactive': currentType }"
+      @click="changeType(false)"
+      :class="{ 'button-inactive': store.getCurrentType }"
     >
       Usuário
     </button>
