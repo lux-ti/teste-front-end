@@ -1,71 +1,44 @@
 <template>
     <div class="main-container-userselec">
-        <div class="perfil-user">
-            <img :src=imgUrl alt="Logo GitHub">
-            <h2>{{name}}</h2>
-            <p>{{bio}}</p>
-            <div class="perfil-user-details">
-                <div class="perfil-user-detail">
-                    <img src="/img/icon.png" alt="Logo GitHub">
-                    <p>{{organization}}</p>
-                </div>
-                <div class="perfil-user-detail">
-                    <img src="/img/location.png" alt="Logo GitHub">
-                    <p>{{location}}</p>
-                </div>
-                <div class="perfil-user-detail">
-                    <img src="/img/icon(1).png" alt="Logo GitHub">
-                    <p>{{repository}}</p>
-                </div>
-                <div class="perfil-user-detail">
-                    <img src="/img/followers.png" alt="Logo GitHub">
-                    <p class="seguidor">{{followers}}</p>
-                </div>
-            </div>
-        </div>
+        <UserProfileCard :name=data.login :img-url=data.avatar_url :bio=data.bio :organization=data.company
+            :location=data.location :repository=data.public_repos :followers=data.followers />
         <div>
-            <Repos />
+            <ul>
+                <li v-for="items in dataRepo">
+                    <RepCard :titulo=items.name :descricao=items.description :stars=items.stargazers_count />
+                </li>
+            </ul>
         </div>
-
     </div>
 </template>
 
+
 <script>
-import Repos from './Repos.vue'
+import UserProfileCard from '../components/UserProfileCard.vue'
+import RepCard from '../components/RepCard.vue'
+
 
 export default {
     name: 'UserSelec',
-    props:{
-        name: {
-            type: String,
-            default: "Sem nome"
-        },
-        imgUrl: {
-            type: String,
-            default: "/img/perfil2.png" 
-        },
-        bio: {
-            type: String,
-            default: "Sem descrição"},
-        organization:{
-            type: String,
-            default: "Sem informação"
-        },
-        location:{
-            type: String,
-            default: "Sem informação"
-        },
-        repository:{
-            type: Number,
-            default: 0
-        },
-        followers:{
-            type: Number,
-            default: 0
-        },        
+    props: {
+        query: String,
+    },
+    async setup(props) {
+        const userSelec = props.query;
+        const reqUserSelec = await fetch(`https://api.github.com/users/${userSelec}`);
+        const data = await reqUserSelec.json();
+        //console.log(userSelec)
+        const reqUserRepo = await fetch(`https://api.github.com/users/${userSelec}/repos`);
+        const dataRepo = await reqUserRepo.json();
+        console.log(dataRepo)
+        return {
+            data,
+            dataRepo
+        }
     },
     components: {
-        Repos,
+        RepCard,
+        UserProfileCard
     }
 }
 </script>
@@ -81,32 +54,12 @@ export default {
     margin: 50px;
 }
 
-.perfil-user {
-    margin-top: 48px;
-    background-color: #D9D9D9;
-    padding: 1rem;
-    width: 339px;
-    height: 644px;
-    border-radius: 5px;
-    text-align: start;
+ul {
+    padding-left: 70px;
 }
 
-.perfil-user p {
-    color: #757575;
-    font-size: 20px;
-}
-
-.perfil-user-detail {
-    display: flex;
-    padding-top: 16px;
-}
-
-.perfil-user-detail img {
-    padding-right: 12px;
-}
-
-.perfil-user-details {
-    margin-top: 28px;
-    margin-bottom: 56px;
+li {
+    list-style: none;
+    border-bottom: 1px solid #000000;
 }
 </style>

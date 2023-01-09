@@ -1,14 +1,14 @@
 <template>
 
-    <div class="main-container">
-      <ul>      
-        <li v-for="repo in repos">
-           <RepCard :titulo=repo.name :descricao=repo.description :stars=repo.stargazers_count />
-        </li>
-      </ul>
+  <div class="main-container">
+    <ul>
+      <li v-for="repo in repos">
+        <RepCard :titulo=repo.name :descricao=repo.description :stars=repo.stargazers_count />
+      </li>
+    </ul>
 
-      <button @click="exibemais()" id="pessoa">Ver mais</button>
-    </div>
+    <button @click="exibemais()" id="pessoa">Ver mais</button>
+  </div>
 
 </template>
 
@@ -17,22 +17,23 @@ import RepCard from './RepCard.vue'
 
 export default {
   name: 'ReposList',
-  props:{
+  props: {
     query: String,
   },
-  async setup(props){
+  async setup(props) {
     const repo = props.query;
     const reqRepo = await fetch(`https://api.github.com/search/repositories?q=${repo}&per_page=4`);
     const data = await reqRepo.json();
-    console.log(data);
-    return {repos:data.items}    
+    console.log(repo);
+    //console.log(data);
+    return { repos: data.items }
   },
   components: {
     RepCard
   },
-  methods:{
-    exibemais(){
-      console.log("fui clicado"); 
+  methods: {
+    exibemais() {
+      console.log("fui clicado");
     }
   }
 }
@@ -40,7 +41,8 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
-.main-container{
+
+.main-container {
   text-align: center;
   padding: 50px;
 }
@@ -63,7 +65,7 @@ input {
   width: 20%;
 }
 
-button{
+button {
   background: #FFFFFF;
   border: 2px solid #000000;
   border-radius: 10px;
@@ -76,9 +78,9 @@ button{
   margin-top: 74px;
 }
 
-button:hover{
+button:hover {
   background: #000000;
-  color:#FFFFFF;
+  color: #FFFFFF;
 }
 </style>
 

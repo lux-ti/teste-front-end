@@ -17,7 +17,7 @@ const routes = [
   {
     path: "/usuarios",
     name: "Users",
-    props: route => ({ query: route.query.q }),
+    props: (route) => ({ query: route.query.q }),
 
     component: () =>
       import(/* webpackChunkName: "favoritos" */ "../views/Users.vue"),
@@ -25,17 +25,18 @@ const routes = [
   {
     path: "/repositorios",
     name: "Repos",
-    props: route => ({ query: route.query.q }),
-    
+    props: (route) => ({ query: route.query.q }),
+
     component: () =>
       import(/* webpackChunkName: "favoritos" */ "../views/Repos.vue"),
   },
   {
     path: "/usuarioselecionado",
-    name: "UserSelec",
+    name: "UserProfile",
+    props: (route) => ({ query: route.query.q }),
 
     component: () =>
-      import(/* webpackChunkName: "favoritos" */ "../views/UserSelec.vue"),
+      import(/* webpackChunkName: "favoritos" */ "../views/UserProfile.vue"),
   },
   {
     path: "/:catchAll(.*)",
