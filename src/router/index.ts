@@ -33,6 +33,11 @@ const router = createRouter({
       component: setCurrentComponent("UserPage"),
       props: true,
     },
+    {
+      path: "/:page(.*)",
+      name: "pageNotFound",
+      component: setCurrentComponent("PageNotFound"),
+    },
   ],
 });
 
