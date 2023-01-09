@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <div class="title">
       <img src="/img/Vector_.png" alt="Logo GitHub">
       <h2 class="title-fav">Repositórios Favoritos</h2>
@@ -29,10 +29,10 @@ export default {
     RepCard
   },
   setup() {
-    // configuramos a store para ter acesso a lista
+    // configurando a store para ter acesso a lista
     const favoritos = useFavoritosStore()
     return {
-      // usamos o computed para renderizar o componente caso a lista seja modificada
+      // usando o computed para renderizar o componente caso a lista seja modificada
       favoritos: computed(() => favoritos.lista),
     }
   }
@@ -42,9 +42,14 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto+Mono&display=swap');
 
+.main-container {
+  text-align: center;
+  padding: 50px;
+}
+
 .title {
   display: flex;
-  padding: 50px;
+  padding-bottom: 42px;
   font-family: 'Roboto Mono';
   font-size: 45px;
 
@@ -55,10 +60,6 @@ export default {
   font-size: 42px;
   color: #222;
   padding-left: 18px;
-}
-
-.lista-favoritos {
-  margin-top: px;
 }
 
 li {

@@ -46,8 +46,8 @@ export default {
 
         },
 
-        enviarFormulario2(e) { // O 'e' está relacionado ao '$event' do form, e nos permite acessar a função preventDefault
-            e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
+        enviarFormulario2(e) {
+            e.preventDefault();
 
             const entrada = this.entrada;
             if (this.entrada != "") {

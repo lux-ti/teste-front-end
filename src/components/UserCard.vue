@@ -63,7 +63,7 @@ export default {
     padding: 5px;
     margin-top: 34px;
     border: none;
-    width: 1286px;
+    width: 100%;
 }
 
 .container-user-info {

@@ -27,6 +27,8 @@ export default {
 
 <style scoped>
 .show-notice {
+    background-color: rgba(0, 0, 0, 0.59);
+    line-height: 26px;
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -35,23 +37,21 @@ export default {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.59);
     border: none;
-    line-height: 26px;
 }
 
 .dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
     border: none;
     border-radius: 15px;
     width: 444px;
     height: 500px;
     padding: 40px;
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
     margin-top: 180px;
 }
 
