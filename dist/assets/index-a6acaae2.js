@@ -1,0 +1,1 @@
+import{d as o,s as r,v as s,u as a,q as n,o as p}from"./index-ab5611b4.js";import{t as i}from"./typeSearch-7030ae71.js";import{R as u}from"./index-a8a9dd25.js";const h=o({__name:"index",setup(c){const e=i(),t=n();return r(()=>{e.getDataRepository.length||t.push({path:"/"})}),(m,f)=>(p(),s(u,{repositories:a(e).getDataRepository},null,8,["repositories"]))}});export{h as default};
