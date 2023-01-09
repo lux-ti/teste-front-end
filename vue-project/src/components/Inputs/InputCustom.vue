@@ -3,7 +3,7 @@ import setup from "./setupComposable/setup";
 import commonProps from "./props/commonProps";
 
 defineProps(commonProps);
-const emit = defineEmits(["update:modelValue"]);
+const emit: any = defineEmits(["update:modelValue"]);
 const { onInput } = setup(emit);
 </script>
 
