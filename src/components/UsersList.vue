@@ -7,6 +7,7 @@
       </li>
     </ul>
     <button @click="exibemais()" id="pessoa">Ver mais</button>
+
   </div>
 
 
@@ -24,7 +25,7 @@ export default {
     const user = props.query;
     const reqUser = await fetch(`https://api.github.com/search/users?q=${user}&per_page=3`);
     const data = await reqUser.json();
-    //console.log(data);
+    console.log(data.total_count);
     return { users: data.items }
   },
   components: {
@@ -36,6 +37,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style scoped>

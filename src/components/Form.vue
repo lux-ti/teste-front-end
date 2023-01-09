@@ -1,65 +1,65 @@
 <template>
     <div class="main-container">
-        <!-- <form action="" @submit="enviarFormulario($event)"> -->
 
-            <div class="home-botao">
-                <button @click="enviarFormulario2($event)" id="pessoa">Repositório</button>
-                <button @click="enviarFormulario($event)" id="pessoa">Pessoa</button>
-            </div>
+        <div class="home-botao">
+            <button @click="enviarFormulario2($event)" id="pessoa">Repositório</button>
+            <button @click="enviarFormulario($event)" id="pessoa">Pessoa</button>
+        </div>
 
-            <div>
-                <input v-model="entrada" class="home-search" placeholder="Buscar...">
-            </div>
-        <!-- </form> -->
+        <div>
+            <input v-model="entrada" class="home-search" placeholder="Buscar...">
+        </div>
+
+        <Notice v-if="showNotice" :showNotice="showNotice" @aoFecharAviso="closeNotice" />
+
 
     </div>
 </template>
 
 <script>
 
-//import InputTextVue from './Form/InputText.vue';
-//import SubmitRepVue from './Form/SubmitRep.vue';
-//import SubmitUserVue from './Form/SubmitUser.vue';
-
+import Notice from '../components/Notice.vue'
 export default {
     name: 'Form',
     components: {
-       // InputTextVue,
-       // SubmitRepVue,
-       // SubmitUserVue
+        Notice
+
     },
     data(props) {
-       // console.log({bla:this, props})
+
         return {
-            entrada: "",            
+            entrada: "",
+            showNotice: false,
         }
     },
     methods: {
         enviarFormulario(e) { // O 'e' está relacionado ao '$event' do form, e nos permite acessar a função preventDefault
             e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
-            
+
             const entrada = this.entrada;
 
-            if(this.entrada != ""){
-            
-            //console.log("Tecla enter apertada" + entrada)
-            //this.$router.push(`/usuarios?q=${entrada}` )
-            this.$router.push({ path: '/usuarios', query: { q: `${entrada}` } })
+            if (this.entrada != "") {
+                this.$router.push({ path: '/usuarios', query: { q: `${entrada}` } })
+            } else {
+                this.showNotice = true
             }
-                   
+
         },
 
         enviarFormulario2(e) { // O 'e' está relacionado ao '$event' do form, e nos permite acessar a função preventDefault
             e.preventDefault(); //Previne que ao submeter o formulário a página seja recarregada
-            
+
             const entrada = this.entrada;
-            if(this.entrada != ""){
-            //console.log("Tecla enter apertada" + entrada)
-            this.$router.push(`/repositorios?q=${entrada}` )
-            //this.$router.push({ path: '/repositorios', query: { q: `${entrada}` } })
+            if (this.entrada != "") {
+                this.$router.push({ path: '/repositorios', query: { q: `${entrada}` } })
+            } else {
+                this.showNotice = true
             }
+        },
+        closeNotice() {
+            this.showNotice = false
         }
-}
+    }
 }
 </script>
 
@@ -88,24 +88,24 @@ export default {
 }
 
 button {
-  font-family: 'Inter';
-  font-weight: 700;
-  size: 20px;
-  color: #000000;
-  width: 186px;
-  height: 51px;
-  left: 518px;
-  top: 379px;
-  background: #FFFFFF;
-  border-radius: 5px;
-  border-color: #000000;
-  margin-inline: 20.5px;
-  transition: 0.5s;
-  cursor: pointer;
+    font-family: 'Inter';
+    font-weight: 700;
+    size: 20px;
+    color: #000000;
+    width: 186px;
+    height: 51px;
+    left: 518px;
+    top: 379px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    border-color: #000000;
+    margin-inline: 20.5px;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
-button:hover{
+button:hover {
     background-color: #000000;
-    color: #FFFFFF; 
+    color: #FFFFFF;
 }
 </style>

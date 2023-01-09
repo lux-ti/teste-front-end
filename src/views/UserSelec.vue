@@ -28,7 +28,7 @@ export default {
         const reqUserSelec = await fetch(`https://api.github.com/users/${userSelec}`);
         const data = await reqUserSelec.json();
         //console.log(userSelec)
-        const reqUserRepo = await fetch(`https://api.github.com/users/${userSelec}/repos`);
+        const reqUserRepo = await fetch(`https://api.github.com/users/${userSelec}/repos?direction=desc`);
         const dataRepo = await reqUserRepo.json();
         console.log(dataRepo)
         return {
