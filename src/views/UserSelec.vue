@@ -5,7 +5,8 @@
         <div>
             <ol>
                 <li v-for="items in dataRepo">
-                    <RepCard :titulo=items.name :descricao=items.description :stars=items.stargazers_count />
+                    <RepCard :id=items.id :titulo=items.name :descricao=items.description
+                        :stars=items.stargazers_count />
                 </li>
             </ol>
         </div>

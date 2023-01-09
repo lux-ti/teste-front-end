@@ -24,9 +24,9 @@ export default {
     const repo = props.query;
     const reqRepo = await fetch(`https://api.github.com/search/repositories?q=${repo}&per_page=4`);
     const data = await reqRepo.json();
-    //console.log(repo);
-    //console.log(data);
-    return { repos: data.items }
+    return {
+      repos: data.items,
+    }
   },
   components: {
     RepCard

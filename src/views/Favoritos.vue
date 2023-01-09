@@ -19,6 +19,8 @@
 <script>
 import Repos from './Repos.vue'
 import RepCard from '@/components/RepCard.vue'
+import { useFavoritosStore } from '@/store'
+import { computed } from 'vue'
 
 export default {
   name: 'UserSelec',
@@ -26,21 +28,13 @@ export default {
     Repos,
     RepCard
   },
-  data() {
+  setup() {
+    // configuramos a store para ter acesso a lista
+    const favoritos = useFavoritosStore()
     return {
-      favoritos: null,
+      // usamos o computed para renderizar o componente caso a lista seja modificada
+      favoritos: computed(() => favoritos.lista),
     }
-  },
-  methods: {
-    async getFavoritos() {
-      const resposta = await fetch('http://localhost:3000/favoritos')
-      const data = await resposta.json()
-      this.favoritos = data;
-      console.log(this.favoritos);
-    }
-  },
-  mounted() {
-    this.getFavoritos();
   }
 }
 </script>
@@ -72,6 +66,3 @@ li {
   border-bottom: 1px solid #000000;
 }
 </style>
-
-
-

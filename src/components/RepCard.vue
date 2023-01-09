@@ -4,7 +4,9 @@
         <div class="container-repo-info">
             <div class="titulo-star">
                 <h2>{{ titulo }}</h2>
-                <img src="/img/blackstar.png" alt="Logo GitHub" class="star" @click="favoritar">
+                <button @click="manipularFavorito()">
+                    <img src="/img/blackstar.png" alt="Logo GitHub" class="star">
+                </button>
             </div>
             <p>{{ descricao }}</p>
 
@@ -19,6 +21,8 @@
 </template>
 
 <script>
+import { useFavoritosStore } from '@/store'
+
 export default {
     name: 'RepCard',
     props: {
@@ -28,26 +32,20 @@ export default {
         id: Number
     },
     methods: {
-        favoritar() {
-            fetch('http://localhost:3000/favoritos', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    titulo: this.titulo,
-                    descricao: this.descricao,
-                    stars: this.stars,
-                    id: this.id
-                })
-            })
-            console.log("Estrela clicada")
+        manipularFavorito() {
+            const repo = {
+                titulo: this.titulo,
+                descricao: this.descricao,
+                stars: this.stars,
+                id: this.id
+            }
+            this.favoritar(repo)
         }
     },
-    data() {
+    setup() {
+        const favoritos = useFavoritosStore()
         return {
-
+            favoritar: favoritos.favoritar,
         }
     }
 }
@@ -90,5 +88,11 @@ export default {
 .star {
     padding-right: 1rem;
 }
-</style>
 
+button {
+    border: none;
+    background-color: #FFFFFF;
+    cursor: pointer;
+
+}
+</style>
