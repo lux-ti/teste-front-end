@@ -4,30 +4,30 @@
     <button>Anterior</button>
   </div>
 
- <!-----------------------<div class="error">
+  <!-----------------------<div class="error">
     <img class="errorImg" src="../assets/image/atencao.png" alt="">
     <h1 class="titleH1">Desculpe!</h1>
-  <p v-if="message === 'Ocorreu um erro ao realizar a pesquisa'" class="class-name">Ocorreu um erro</p>
-  <p v-else-if="message === 'Erro de validação'" class="class-name">Erro de validação</p>
-  <p v-else class="class-name">Não foi possível encontrar o <br> repositório ou usuário desejado!</p>
+  <p v-if="message === '`Não foram encontrados resultados para a pesquisa'" class="class-name">`Não foram encontrados resultados para a pesquisa</p>
+  <p v-else-if="message === 'Ocorreu um erro ao realizar a pesquisa'" class="class-name">Desculpe! pagina não encontrada!</p>
   <button class="erroAviso">Certo</button>
 </div> ----------------------------->
 
   <div class="info" v-if="items.length > 0">
     <ul>
-      <li v-for="item in items" :key="item.id">
+      <li v-for="(item, index) in items" :key="item.id">
         <div class="to_favorite">
           <p class="title">{{ item.name }}</p>
-          <a
-            href="#"
-            v-on:click.prevent="
-              addFavoritos(item.id, item.name, item.stargazers_count)
-            "
-          >
-            <img v-bind:src="estrela" />
+          <a href="#" v-on:click.prevent="addFavoritos(index)">
+            <img
+              v-bind:src="
+                item.favorite
+                  ? 'src/assets/staryellow.svg'
+                  : 'src/assets/star.svg'
+              "
+            />
           </a>
         </div>
-        <p class="description">{{ item.description }} {{ this.favoritados }}</p>
+        <p class="description">{{ item.description }}</p>
         <div class="star_count">
           <img src="../assets/star.svg" alt="" />{{ item.stargazers_count }}
         </div>
@@ -45,7 +45,7 @@ export default {
       estrela: "src/assets/star.svg",
       items: [],
       message: "",
-      favoritados: [],
+      favoritos: [],
       limit: 3,
     };
   },
@@ -64,7 +64,6 @@ export default {
             this.message = `Não foram encontrados resultados para a pesquisa "${name}"`;
           } else {
             this.items = response.data.items;
-            this.message = `Resultados da pesquisa "${name}"`;
           }
         })
         .catch((error) => {
@@ -72,35 +71,37 @@ export default {
           this.message = "Ocorreu um erro ao realizar a pesquisa";
         });
     },
-    addFavoritos(id, name, stargazers_count) {
-      this.estrela = "src/assets/staryellow.svg";
 
-      const favoritoIgual = this.favoritados.some((favoritado) => {
-        return favoritado.id === id;
+    addFavoritos(index) {
+      const item = this.items[index];
+      console.log(item);
+      item.favorite = !item.favorite;
+      console.log(item.favorite);
+      const favoritoIgual = this.favoritos.some((favorito) => {
+        return favorito.id === item.id;
       });
       if (!favoritoIgual) {
-        this.favoritados.push({
-          id: id,
-          name: name,
-          stargazers_count: stargazers_count,
+        this.favoritos.push({
+          id: item.id,
+          name: item.name,
+          stargazers_count: item.stargazers_count,
         });
       } else {
-        const novoArray = this.favoritados.filter((item) => {
-          if (item.id === id) {
+        const novoArray = this.favoritos.filter((favorito) => {
+          if (favorito.id === item.id) {
             return false;
           }
-          return item;
+          return favorito;
         });
-        this.favoritados = novoArray;
+        this.favoritos = novoArray;
       }
     },
   },
 };
 </script>
 
-
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
 
 * {
   padding: 0px;
@@ -169,18 +170,19 @@ img {
   font-weight: 500;
 }
 
-.erroAviso{
-  background-color: #FF0000;
+.erroAviso {
+  background-color: #ff0000;
   width: 197px;
   height: 72px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 40px;
   border: none;
   border-radius: 10px;
   margin-top: 50px;
 }
 
-.titleH1, .errorImg{
+.titleH1,
+.errorImg {
   margin-bottom: 50px;
 }
 </style>

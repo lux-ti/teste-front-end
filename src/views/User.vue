@@ -10,16 +10,39 @@
       <h2><span class="material-icons">work</span> {{ item.public_repos }}</h2>
       <h2><span class="material-icons">groups</span> {{ item.followers }}</h2>
     </div>
-    <div class="repositories">
-      <div v-for="repositorio in repositorios" :key="repositorio.id">
-        <h1 class="to_favorite">
-          {{ repositorio.name }} <img src="../assets/star.svg" alt="" />
-        </h1>
-        <h2 class="numberstars">
-          <img class="star" src="../assets/star.svg" alt="" />{{
-            repositorio.stargazers_count
+
+    <div>
+      <div
+        class="repositories"
+        v-for="repositorio in repositorios"
+        :key="repositorio.id"
+      >
+        <div class="container">
+          <h1>
+            {{ repositorio.name }}
+          </h1>
+
+          <a href="#" v-on:click.prevent="addFavoritos(index)">
+            <img
+              v-bind:src="
+                repositorio.favorite
+                  ? 'src/assets/staryellow.svg'
+                  : 'src/assets/star.svg'
+              "
+            />
+          </a>
+        </div>
+        <p>
+          {{
+            repositorio.description == null
+              ? "Sem descrição"
+              : repositorio.description
           }}
-        </h2>
+        </p>
+        <div class="containerStar">
+          <img src="../assets/star.svg" alt="" />
+          {{ repositorio.stargazers_count }}
+        </div>
       </div>
     </div>
   </section>
@@ -34,20 +57,10 @@ import axios from "axios";
 export default {
   data() {
     return {
-      url_foto: "https://avatars.githubusercontent.com/u/95485809?v=4",
-      item: [
-        { avatar_url: "teste", login: "teste" },
-        { avatar_url: "teste2", login: "teste2" },
-      ],
-      repositorios: [
-        {
-          id: 1,
-          name: "nome do repositorio",
-          description: "ok",
-          stargazers_count: 1,
-        },
-      ],
-      message: "Testando",
+      item: [],
+      repositorios: [],
+      favoritos: [],
+      message: "",
     };
   },
   created() {
@@ -65,9 +78,32 @@ export default {
       let name = this.$route.query.name || "maria";
       axios(`https://api.github.com/users/${name}/repos`).then((e) => {
         this.repositorios = e.data;
-        // console.log('ok')
+        console.log(this.repositorios);
       });
       // console.log('ok')
+    },
+    addFavoritos(index) {
+      const item = this.item[index];
+    
+      item.favorite = !item.favorite;
+      const favoritoIgual = this.favoritos.some((favorito) => {
+        return favorito.id === item.id;
+      });
+      if (!favoritoIgual) {
+        this.favoritos.push({
+          id: item.id,
+          name: item.name,
+          stargazers_count: item.stargazers_count,
+        });
+      } else {
+        const novoArray = this.favoritos.filter((favorito) => {
+          if (favorito.id === item.id) {
+            return false;
+          }
+          return favorito;
+        });
+        this.favoritos = novoArray;
+      }
     },
   },
 };
@@ -141,12 +177,25 @@ img {
 }
 
 .repositories {
-  display: grid;
-}
-
-.repositories div {
   margin: 36px 73px;
   border-bottom: 1px solid;
+  padding-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.containerStar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.containerStar img {
+  margin-top: 3px;
 }
 
 .star {
