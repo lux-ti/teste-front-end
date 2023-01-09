@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+function setCurrentComponent(page: string) {
+  return () => import(`@/views/${page}/index.vue`);
+}
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,6 +18,11 @@ const router = createRouter({
       component: setCurrentComponent("Repositories"),
     },
     {
+      path: "/favorites",
+      name: "favorites",
+      component: setCurrentComponent("Favorites"),
+    },
+    {
       path: "/users",
       name: "users",
       component: setCurrentComponent("Users"),
@@ -26,9 +35,5 @@ const router = createRouter({
     },
   ],
 });
-
-function setCurrentComponent(page: string) {
-  return () => import(`@/views/${page}/index.vue`);
-}
 
 export default router;

@@ -2,8 +2,10 @@
 import {reactive} from 'vue';
 import commonProps from "./props/commonProps";
 import { typeSearch } from "@/stores/typeSearch";
+import favIcon from '@/assets/img/starIconFav.png'
+import starIcon from '@/assets/img/starIcon.png'
 
-defineProps(commonProps);
+const {repositories} = defineProps(commonProps);
 
 const currentType = typeSearch();
 
@@ -12,7 +14,26 @@ const data = reactive({
 })
 
 function getMoreData() {
-  currentType.getMoreData(data.currentPage++)
+  if(currentType.getCurrentUser?.login) {
+    currentType.setCurrentRepository(currentType.getCurrentUser?.login, data.currentPage++)
+    return
+  }
+  currentType.getMoreData(data.currentPage++);
+}
+
+function teste(index: any) {
+  if(currentType?.getFavorites && repositories.length) {
+    for (var i = 0; i < currentType.getFavorites.length; i++) {
+      if(currentType.getFavorites[i].id == repositories[index].id) {
+        return true
+      }
+    }
+  }
+  return false
+}
+
+function addFavorite(index: any) {
+  currentType.actionFavorite(repositories[index]);
 }
 
 </script>
@@ -20,6 +41,7 @@ function getMoreData() {
 <template>
   <div class="repositorie-list">
     <div
+      v-if="repositories.length"
       v-for="(repositorie, index) in repositories"
       class="repositories"
       :key="index">
@@ -36,15 +58,20 @@ function getMoreData() {
         </span>
       </div>
       <hr>
-      <img class="fav-icon" src="@/assets/img/starIcon.png">
+      <img class="fav-icon" :src="teste(index) ? favIcon : starIcon" @click="addFavorite(index)">
     </div>
-    <button class="show-more-button" @click="getMoreData">Ver Mais</button>
+    <button class="show-more-button" @click="getMoreData" v-if="repositories.length && !removeButton">Ver Mais</button>
+    <div v-if="!repositories.length">
+      <h1>Nenhum Registro encontrado</h1>
+    </div>
   </div>
 </template>
 
 <style scoped>
+h1{
+  font-family: sans-serif;
+}
   .repositorie-list{
-    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

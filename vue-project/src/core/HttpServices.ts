@@ -7,14 +7,6 @@ class HttpServices {
     this.defaultUrl = defaultUrl;
   }
 
-  public get(slug = "", params = {}, defaultUrl = this.defaultUrl) {
-    return axios.get(`${defaultUrl}${slug}`, { params });
-  }
-
-  public searchUsers(params = {}, defaultUrl = this.defaultUrl) {
-    return axios.get(`${defaultUrl}search/users`, { params });
-  }
-
   public searchList(
     currentType: boolean,
     params = {},
@@ -24,6 +16,10 @@ class HttpServices {
       `${defaultUrl}search/${currentType ? "repositories" : "users"}`,
       { params }
     );
+  }
+
+  public searchUsers(url: string | string[], params = {}) {
+    return axios.get(`${this.defaultUrl}users/${url}`, { params });
   }
 }
 

@@ -16,10 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="default-spacing">
-    <RepositoryList
-      class="repository-component"
-      :repositories="currentType.getDataRepository"
-    />
-  </div>
+  <RepositoryList
+    :repositories="currentType.getDataRepository"
+  />
 </template>

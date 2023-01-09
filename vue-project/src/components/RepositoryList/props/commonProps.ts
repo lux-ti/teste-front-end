@@ -5,4 +5,8 @@ export default {
     type: Array as PropType<any[]>,
     default: () => [],
   },
+  removeButton: {
+    type: Boolean,
+    default: false,
+  },
 };

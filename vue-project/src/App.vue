@@ -1,20 +1,22 @@
 <script setup lang="ts">
 import Modal from "@/components/Modal/Modal.vue";
-import NavbarComponent from './components/NavbarComponent.vue';
-import { useModal } from "./stores/modal";
+import NavbarComponent from '@/components/NavbarComponent.vue';
+import { useModal } from "@/stores/modal";
 
 const store = useModal();
 
 </script>
 
 <template>
-  <div class="body">
-    <header>
-      <NavbarComponent />
-    </header>
-    <Modal
-      v-if="store.showingModal"
-    />
+<body>
+  <Modal
+    v-if="store.showingModal"
+  />
+  <header>
+    <NavbarComponent />
+  </header>
+  <main class="default-spacing">
     <RouterView />
-  </div>
+  </main>
+</body>
 </template>

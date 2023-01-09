@@ -43,6 +43,7 @@ async function sendDataToSearch() {
     <TypeButtons />
     <div class="search">
       <InputCustom
+        @keyup.enter="sendDataToSearch"
         v-model="searchData"
         class="input-search"
         placeholder="Buscar..."
@@ -58,28 +59,30 @@ async function sendDataToSearch() {
 
 <style scoped>
 .home-page {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 4rem;
 }
 .search {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   position: relative;
 }
 .input-search {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 2px solid #000000;
   width: 780px;
   font-size: 24px;
-  height: 71px;
+  height: 59px;
   padding-left: 30px;
   border-radius: 10px;
 }
 
 .search-icon {
   position: absolute;
-  top: 19px;
+  top: 13px;
   cursor: pointer;
-  right: 40px;
+  right: 14px;
   width: 34px;
 }
 </style>

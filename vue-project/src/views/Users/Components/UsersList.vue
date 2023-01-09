@@ -16,7 +16,7 @@ function goToPageUser(userLogin: string) {
   <div class="user-list">
     <div
       v-for="(user, index) in users"
-      class="card-user default-spacing"
+      class="card-user"
       :key="index"
       @click.prevent="goToPageUser(user.login)">
       <img :src="user.avatar_url">
@@ -28,7 +28,6 @@ function goToPageUser(userLogin: string) {
 <style scoped>
 .user-list{
   width: 100%;
-  margin-top: 2rem;
 }
 .card-user{
   cursor: pointer;

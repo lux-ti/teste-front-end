@@ -3,7 +3,7 @@
     <img src="@/assets/img/TitleSite.png" alt="">
     <div class="navigation-options">
       <router-link to="/">INÍCIO</router-link>
-      <router-link to="/">FAVORITOS</router-link>
+      <router-link to="/favorites">FAVORITOS</router-link>
     </div>
   </div>
 </template>
