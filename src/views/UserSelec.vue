@@ -3,11 +3,11 @@
         <UserProfileCard :name=data.login :img-url=data.avatar_url :bio=data.bio :organization=data.company
             :location=data.location :repository=data.public_repos :followers=data.followers />
         <div>
-            <ul>
+            <ol reversed>
                 <li v-for="items in dataRepo">
                     <RepCard :titulo=items.name :descricao=items.description :stars=items.stargazers_count />
                 </li>
-            </ul>
+            </ol>
         </div>
     </div>
 </template>
@@ -54,7 +54,7 @@ export default {
     margin: 50px;
 }
 
-ul {
+ol {
     padding-left: 70px;
 }
 

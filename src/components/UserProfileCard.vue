@@ -69,19 +69,17 @@ h2 {
 }
 
 .profile-user {
+    color: #757575;
+    font-size: 20px;
     font-family: 'Rubik';
     margin-top: 48px;
     background-color: #D9D9D9;
     padding: 1rem;
     width: 339px;
-    height: 644px;
+    height: fit-content;
     border-radius: 5px;
     text-align: start;
-}
 
-.profile-user {
-    color: #757575;
-    font-size: 20px;
 }
 
 .profile-bio {
