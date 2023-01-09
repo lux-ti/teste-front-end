@@ -3,7 +3,7 @@
     <img src="@/assets/img/TitleSite.png" alt="">
     <div class="navigation-options">
       <router-link to="/">Início</router-link>
-      <router-link to="/about">Favoritos</router-link>
+      <!-- <router-link to="/about">Favoritos</router-link> -->
     </div>
   </div>
 </template>
@@ -20,8 +20,8 @@
   }
 
   .navbar > * {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
   }
 
   .navigation-options > a{

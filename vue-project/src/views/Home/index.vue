@@ -3,15 +3,12 @@ import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
 import InputCustom from "@/components/Inputs/InputCustom.vue";
 import TypeButtons from "./Components/TypeButtons.vue";
-import HttpService from '@/core/HttpServices'
 import { useModal } from '@/stores/modal';
 import { typeSearch } from "@/stores/typeSearch";
 
 const currentType = typeSearch();
 const store = useModal();
 const router = useRouter();
-
-const service = new HttpService();
 
 const data = reactive({
   searchData: "" as string,
@@ -21,16 +18,14 @@ const { searchData } = toRefs(data);
 
 async function sendDataToSearch() {
   try {
-    const result = await service.searchList(currentType.getCurrentType, {
-      q: data.searchData,
-      page: 1
-    });
+
+    currentType.setSearchData(data.searchData);
+
+    const result = await currentType.searchList();
 
     if(!result.data.items.length) {
       throw new Error("");
     }
-
-    currentType.setSearchData(data.searchData);
 
     currentType[currentType.getCurrentType ? 'setRepository': 'setUsers'](result.data.items);
 

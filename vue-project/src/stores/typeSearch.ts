@@ -1,4 +1,7 @@
 import { defineStore } from "pinia";
+import HttpService from "@/core/HttpServices";
+
+const service = new HttpService();
 
 export const typeSearch = defineStore({
   id: "typeSearch",
@@ -7,6 +10,7 @@ export const typeSearch = defineStore({
     dataRepository: [] as any[],
     dataUsers: [],
     searchData: "",
+    page: 1 as number,
   }),
   actions: {
     changeType(value: boolean) {
@@ -21,11 +25,25 @@ export const typeSearch = defineStore({
     setSearchData(value: string) {
       this.searchData = value;
     },
+    async searchList(currentPage?: number) {
+      return service.searchList(this.type, {
+        q: this.searchData,
+        page: currentPage ?? this.page,
+        per_page: 4,
+      });
+    },
+    async getMoreRepositories(currentPage: number) {
+      const repositories = await this.searchList(currentPage);
+      repositories.data.items.forEach((repository: any) => {
+        this.dataRepository.push(repository);
+      });
+    },
   },
   getters: {
     getCurrentType: (state) => state.type,
     getSearchData: (state) => state.searchData,
     getDataUsers: (state) => state.dataUsers,
     getDataRepository: (state) => state.dataRepository,
+    getCurrentPage: (state) => state.page,
   },
 });
