@@ -4,15 +4,14 @@
     <button>Anterior</button>
   </div>
 
-  <p
-    v-bind:class="{ 'class-name': message }"
-    v-if="message === 'Não foram encontrados resultados para a pesquisa'"
-  >
-    Nenhum resultado encontrado
-  </p>
-  <p v-else-if="message === 'Ocorreu um erro ao realizar a pesquisa'">
-    Ocorreu um erro
-  </p>
+ <!-----------------------<div class="error">
+    <img class="errorImg" src="../assets/image/atencao.png" alt="">
+    <h1 class="titleH1">Desculpe!</h1>
+  <p v-if="message === 'Ocorreu um erro ao realizar a pesquisa'" class="class-name">Ocorreu um erro</p>
+  <p v-else-if="message === 'Erro de validação'" class="class-name">Erro de validação</p>
+  <p v-else class="class-name">Não foi possível encontrar o <br> repositório ou usuário desejado!</p>
+  <button class="erroAviso">Certo</button>
+</div> ----------------------------->
 
   <div class="info" v-if="items.length > 0">
     <ul>
@@ -99,7 +98,10 @@ export default {
 };
 </script>
 
+
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
 * {
   padding: 0px;
   margin: 0px;
@@ -160,5 +162,25 @@ img {
   justify-content: center;
   align-items: center;
   height: 547px;
+  flex-direction: column;
+  font-size: 24px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+
+.erroAviso{
+  background-color: #FF0000;
+  width: 197px;
+  height: 72px;
+  color: #FFFFFF;
+  font-size: 40px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
+.titleH1, .errorImg{
+  margin-bottom: 50px;
 }
 </style>

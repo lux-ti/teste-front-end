@@ -1,29 +1,31 @@
+## O que é o framework Vue?
+
+O Vue. js é um framework Javascript open source bastante conhecido pela sua reatividade. Usado para construir SPA (Single Page Applications) e interfaces de usuário, tornou-se uma excelente opção, também, pelo fato de ter componentes reutilizáveis e proporcionar o desenvolvimento ágil.
+
 # vue-project
 
-This template should help get you started developing with Vue 3 in Vite.
+Olá! Seja bem-vindo(a)!
+No inicío deste ano fui desafiada a aprender o Vue.js e desde o primeiro contato eu já me encantei com o fremework, sei que tenho muito a aprender e gosto disso,  apresento a vocês o primeiro de muitos que virão:
 
-## Recommended IDE Setup
+## Vizualize o projeto:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[Link para vizualizar o projeto](https://code.visualstudio.com/) [Guia de estilo](https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=4550%3A81&t=hpDxGeIvJ2lYKxjq-0).
 
-## Customize configuration
+## Sobre o projeto:
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+ uma aplicação client-side, que consulte a API do GitHub e mostre os repositórios de um determinado usuário.
 
-## Project Setup
+ Funcionalidades presente:
 
-```sh
-npm install
-```
+-Integração com API;
+-Resultado de busca por usuário;
+-Usuário selecionado;
+-Resultado de buscar por repositório;
 
-### Compile and Hot-Reload for Development
+## Em produção:
 
-```sh
-npm run dev
-```
+-Favoritos;
+-Página não encontrada;
 
-### Compile and Minify for Production
 
-```sh
-npm run build
-```
+
