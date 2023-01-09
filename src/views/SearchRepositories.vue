@@ -3,15 +3,16 @@
     <button>Próximo</button>
     <button>Anterior</button>
   </div>
-  <div class="error">
-    <img src="../assets/image/atencao.png" alt="" />
-    <p v-if="message === 'Não foram encontrados resultados para a pesquisa'">
-      Desculpe! Não foi possível encontrar o repositório ou usuário desejado!
-    </p>
-    <p v-else-if="message === 'Ocorreu um erro ao realizar a pesquisa'">
-      Ocorreu um erro
-    </p>
-  </div>
+
+  <p
+    v-bind:class="{ 'class-name': message }"
+    v-if="message === 'Não foram encontrados resultados para a pesquisa'"
+  >
+    Nenhum resultado encontrado
+  </p>
+  <p v-else-if="message === 'Ocorreu um erro ao realizar a pesquisa'">
+    Ocorreu um erro
+  </p>
 
   <div class="info" v-if="items.length > 0">
     <ul>
