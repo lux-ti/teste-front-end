@@ -5,7 +5,7 @@ O Vue. js é um framework Javascript open source bastante conhecido pela sua rea
 # vue-project
 
 Olá! Seja bem-vindo(a)!
-No inicío deste ano fui desafiada a aprender o Vue.js e desde o primeiro contato eu já me encantei com o fremework, sei que tenho muito a aprender e gosto disso,  apresento a vocês o primeiro de muitos que virão:
+No inicío deste ano fui desafiada a aprender o Vue.js e desde o primeiro contato eu já me encantei com o fremework, sei que tenho muito a aprender e gosto disso,  apresento a vocês o primeiro  projeto de muitos que virão:
 
 ## Vizualize o projeto:
 
@@ -20,15 +20,15 @@ No inicío deste ano fui desafiada a aprender o Vue.js e desde o primeiro contat
 
  Funcionalidades presente:
 
--Integração com API;
--Resultado de busca por usuário;
--Usuário selecionado;
--Resultado de buscar por repositório;
+- Integração com API;
+- Resultado de busca por usuário;
+- Usuário selecionado;
+- Resultado de buscar por repositório;
 
 ## Em produção:
 
--Favoritos;
--Página não encontrada;
+- Favoritos;
+- Página não encontrada;
 
 
 
