@@ -9,7 +9,7 @@ No inicío deste ano fui desafiada a aprender o Vue.js e desde o primeiro contat
 
 ## Vizualize o projeto:
 
-[Link para vizualizar o projeto](https://code.visualstudio.com/)
+[Link para vizualizar o projeto]()
 
 
 [Guia de estilo](https://www.figma.com/file/tN2N6ewvYvn3Mr3HPWKzhD/Desafio-Lux?node-id=4550%3A81&t=hpDxGeIvJ2lYKxjq-0).
