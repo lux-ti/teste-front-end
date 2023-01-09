@@ -2,11 +2,14 @@
 
     <div class="main-container-repo">
         <div class="container-repo-info">
-            <h2>{{ titulo }}</h2>
+            <div class="titulo-star">
+                <h2>{{ titulo }}</h2>
+                <img src="/img/blackstar.png" alt="Logo GitHub" class="star" @click="favoritar">
+            </div>
             <p>{{ descricao }}</p>
 
             <div class="container-repo-star">
-                <img src="/img/star.png" alt="Logo GitHub" class="star" @click="favoritar">
+                <img src="/img/star.png" alt="Logo GitHub" class="star">
                 <p>{{ stars }}</p>
             </div>
         </div>
@@ -39,7 +42,7 @@ export default {
                     id: this.id
                 })
             })
-
+            console.log("Estrela clicada")
         }
     },
     data() {
@@ -52,6 +55,11 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+.titulo-star {
+    display: flex;
+    justify-content: space-between;
+}
 
 .main-container-repo {
     margin: 50px;

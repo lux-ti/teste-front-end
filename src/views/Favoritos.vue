@@ -5,7 +5,12 @@
       <h2 class="title-fav">Repositórios Favoritos</h2>
     </div>
     <div>
-      <Repos />
+      <ul class="lista-favoritos">
+        <li v-for="favorito in favoritos" :key="favorito.id">
+          <RepCard :id=favorito.id :titulo=favorito.titulo :descricao=favorito.descricao :stars=favorito.stars />
+        </li>
+      </ul>
+
     </div>
 
   </div>
@@ -13,16 +18,29 @@
 
 <script>
 import Repos from './Repos.vue'
+import RepCard from '@/components/RepCard.vue'
 
 export default {
   name: 'UserSelec',
   components: {
     Repos,
+    RepCard
+  },
+  data() {
+    return {
+      favoritos: null,
+    }
+  },
+  methods: {
+    async getFavoritos() {
+      const resposta = await fetch('http://localhost:3000/favoritos')
+      const data = await resposta.json()
+      this.favoritos = data;
+      console.log(this.favoritos);
+    }
   },
   mounted() {
-    fetch('http://localhost:3000/favoritos')
-      .then(resposta => resposta.json())
-      .then(dados => console.log(dados))
+    this.getFavoritos();
   }
 }
 </script>
@@ -32,7 +50,6 @@ export default {
 
 .title {
   display: flex;
-  position: absolute;
   padding: 50px;
   font-family: 'Roboto Mono';
   font-size: 45px;
@@ -44,6 +61,15 @@ export default {
   font-size: 42px;
   color: #222;
   padding-left: 18px;
+}
+
+.lista-favoritos {
+  margin-top: px;
+}
+
+li {
+  list-style: none;
+  border-bottom: 1px solid #000000;
 }
 </style>
 

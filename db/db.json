@@ -29,6 +29,18 @@
       "descricao": "Rust Memory Safety & Undefined Behavior Detection",
       "stars": 1165,
       "id": 309803886
+    },
+    {
+      "titulo": "Vue_Practicing",
+      "descricao": null,
+      "stars": 0,
+      "id": 331761635
+    },
+    {
+      "titulo": "Java",
+      "descricao": "All Algorithms implemented in Java",
+      "stars": 49594,
+      "id": 63477660
     }
   ]
 }
