@@ -67,7 +67,6 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
 * {
   padding: 0px;
   margin: 0px;
@@ -94,12 +93,11 @@ li {
 img {
   width: 144px;
   height: 144px;
-  margin: 13px  13px;
+  margin: 13px 13px;
   border-radius: 5px;
   box-shadow: 0px 0px 4px 0px #000000;
-
 }
-p{
+p {
   font-size: 36px;
   margin: 22px 13px;
   font-family: "Rubik", sans-serif;

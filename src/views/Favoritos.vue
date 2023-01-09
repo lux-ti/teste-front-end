@@ -3,6 +3,7 @@
     <img class="image_github" src="../assets/image/Vector.png" alt="" />
     <h1 class="title">Repositórios Favoritos</h1>
   </div>
+  
 </template>
 
 <script></script>

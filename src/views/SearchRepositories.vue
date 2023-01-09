@@ -3,34 +3,34 @@
     <button>Próximo</button>
     <button>Anterior</button>
   </div>
-
-  <p
-    v-bind:class="{ 'class-name': message }"
-    v-if="message === 'Não foram encontrados resultados para a pesquisa'"
-  >
-    Nenhum resultado encontrado
-  </p>
-  <p v-else-if="message === 'Ocorreu um erro ao realizar a pesquisa'">
-    Ocorreu um erro
-  </p>
+  <div class="error">
+    <img src="../assets/image/atencao.png" alt="" />
+    <p v-if="message === 'Não foram encontrados resultados para a pesquisa'">
+      Desculpe! Não foi possível encontrar o repositório ou usuário desejado!
+    </p>
+    <p v-else-if="message === 'Ocorreu um erro ao realizar a pesquisa'">
+      Ocorreu um erro
+    </p>
+  </div>
 
   <div class="info" v-if="items.length > 0">
     <ul>
       <li v-for="item in items" :key="item.id">
-        <a
-          v-bind:href="
-            'https://github.com/' + item.owner.login + '/' + item.name + ''
-          "
-        >
-          <div class="to_favorite">
-            <p class="title">{{ item.name }}</p>
-            <img src="../assets/star.svg" alt="" />
-          </div>
-          <p class="description">{{ item.description }}</p>
-          <div class="star_count">
-            <img src="../assets/star.svg" alt="" />{{ item.stargazers_count }}
-          </div>
-        </a>
+        <div class="to_favorite">
+          <p class="title">{{ item.name }}</p>
+          <a
+            href="#"
+            v-on:click.prevent="
+              addFavoritos(item.id, item.name, item.stargazers_count)
+            "
+          >
+            <img v-bind:src="estrela" />
+          </a>
+        </div>
+        <p class="description">{{ item.description }} {{ this.favoritados }}</p>
+        <div class="star_count">
+          <img src="../assets/star.svg" alt="" />{{ item.stargazers_count }}
+        </div>
       </li>
     </ul>
   </div>
@@ -42,9 +42,11 @@ import axios from "axios";
 export default {
   data() {
     return {
-      url_foto: "https://avatars.githubusercontent.com/u/95485809?v=4",
+      estrela: "src/assets/star.svg",
       items: [],
       message: "",
+      favoritados: [],
+      limit: 3,
     };
   },
   created() {
@@ -69,6 +71,28 @@ export default {
           // Algum tipo de erro ocorreu (por exemplo, falha de rede)
           this.message = "Ocorreu um erro ao realizar a pesquisa";
         });
+    },
+    addFavoritos(id, name, stargazers_count) {
+      this.estrela = "src/assets/staryellow.svg";
+
+      const favoritoIgual = this.favoritados.some((favoritado) => {
+        return favoritado.id === id;
+      });
+      if (!favoritoIgual) {
+        this.favoritados.push({
+          id: id,
+          name: name,
+          stargazers_count: stargazers_count,
+        });
+      } else {
+        const novoArray = this.favoritados.filter((item) => {
+          if (item.id === id) {
+            return false;
+          }
+          return item;
+        });
+        this.favoritados = novoArray;
+      }
     },
   },
 };
@@ -110,7 +134,7 @@ img {
   margin-bottom: 11px;
 }
 
-.to_favorite{
+.to_favorite {
   display: flex;
   justify-content: space-between;
 }
@@ -127,5 +151,13 @@ img {
   border-radius: 5px;
   color: white;
   background-color: #2c3e50;
+}
+
+.error {
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 547px;
 }
 </style>
