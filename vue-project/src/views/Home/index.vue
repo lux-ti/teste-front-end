@@ -68,15 +68,18 @@ async function sendDataToSearch() {
   position: relative;
 }
 .input-search {
-  width: 600px;
-  padding: 15px;
-  border-radius: 5px;
+  width: 780px;
+  font-size: 24px;
+  height: 71px;
+  padding-left: 30px;
+  border-radius: 10px;
 }
 
 .search-icon {
   position: absolute;
-  top: 11px;
+  top: 19px;
   cursor: pointer;
-  right: 20px;
+  right: 40px;
+  width: 34px;
 }
 </style>

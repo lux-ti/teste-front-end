@@ -1,7 +1,19 @@
 <script setup lang="ts">
+import {reactive} from 'vue';
 import commonProps from "./props/commonProps";
+import { typeSearch } from "@/stores/typeSearch";
 
 defineProps(commonProps);
+
+const currentType = typeSearch();
+
+const data = reactive({
+  currentPage: 2
+})
+
+function getMoreData() {
+  currentType.getMoreData(data.currentPage++)
+}
 
 </script>
 
@@ -26,19 +38,22 @@ defineProps(commonProps);
       <hr>
       <img class="fav-icon" src="@/assets/img/starIcon.png">
     </div>
+    <button class="show-more-button" @click="getMoreData">Ver Mais</button>
   </div>
 </template>
 
 <style scoped>
   .repositorie-list{
-    width: 100%;
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .repositories {
+    width: 100%;
     position: relative;
     font-family: sans-serif;
-    margin-left: 50px;
-    margin-right: 50px;
   }
 
   .repositories h1{
@@ -51,7 +66,7 @@ defineProps(commonProps);
     font-size: 24px;
   }
   .repositories div{
-     margin-top: 15px;
+    margin-top: 15px;
     display: flex;
     align-items: center;
   }

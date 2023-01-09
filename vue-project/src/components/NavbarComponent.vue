@@ -1,9 +1,9 @@
 <template>
-  <div class="navbar">
+  <div class="navbar default-spacing">
     <img src="@/assets/img/TitleSite.png" alt="">
     <div class="navigation-options">
-      <router-link to="/">Início</router-link>
-      <!-- <router-link to="/about">Favoritos</router-link> -->
+      <router-link to="/">INÍCIO</router-link>
+      <router-link to="/">FAVORITOS</router-link>
     </div>
   </div>
 </template>
@@ -11,17 +11,10 @@
 
 <style scoped>
   .navbar {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #D9D9D9;
-    width: 100%;
-    height: 5vh;
-  }
-
-  .navbar > * {
-    margin-left: 50px;
-    margin-right: 50px;
   }
 
   .navigation-options > a{
@@ -30,7 +23,7 @@
     margin-right: 20px;
     color: #000;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 20px;
     font-family: sans-serif;
   }
 </style>

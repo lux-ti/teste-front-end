@@ -7,7 +7,6 @@ function changeType(value: boolean) {
   store.changeType(value)
 }
 
-
 </script>
 
 <template>
@@ -34,9 +33,10 @@ function changeType(value: boolean) {
 .buttons > button {
   cursor: pointer;
   margin: 10px;
-  width: 150px;
-  height: 40px;
+  width: 186px;
+  height: 51px;
   font-weight: bold;
+  font-size: 20px;
   border-radius: 5px;
   font-weight: bold;
   background-color: #000000;

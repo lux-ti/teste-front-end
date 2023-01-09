@@ -8,7 +8,7 @@ export const typeSearch = defineStore({
   state: () => ({
     type: true as boolean,
     dataRepository: [] as any[],
-    dataUsers: [],
+    dataUsers: [] as any[],
     searchData: "",
     page: 1 as number,
   }),
@@ -20,7 +20,7 @@ export const typeSearch = defineStore({
       this.dataRepository = value;
     },
     setUsers(value: any[]) {
-      this.dataRepository = value;
+      this.dataUsers = value;
     },
     setSearchData(value: string) {
       this.searchData = value;
@@ -32,10 +32,11 @@ export const typeSearch = defineStore({
         per_page: 4,
       });
     },
-    async getMoreRepositories(currentPage: number) {
-      const repositories = await this.searchList(currentPage);
-      repositories.data.items.forEach((repository: any) => {
-        this.dataRepository.push(repository);
+
+    async getMoreData(currentPage: number) {
+      const { data } = await this.searchList(currentPage);
+      data.items.forEach((repository: any) => {
+        this[this.type ? "dataRepository" : "dataUsers"].push(repository);
       });
     },
   },
