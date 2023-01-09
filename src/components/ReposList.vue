@@ -3,7 +3,7 @@
   <div class="main-container">
     <ul>
       <li v-for="repo in repos">
-        <RepCard :titulo=repo.name :descricao=repo.description :stars=repo.stargazers_count />
+        <RepCard :id=repo.id :titulo=repo.name :descricao=repo.description :stars=repo.stargazers_count />
       </li>
     </ul>
 
@@ -24,7 +24,7 @@ export default {
     const repo = props.query;
     const reqRepo = await fetch(`https://api.github.com/search/repositories?q=${repo}&per_page=4`);
     const data = await reqRepo.json();
-    console.log(repo);
+    //console.log(repo);
     //console.log(data);
     return { repos: data.items }
   },

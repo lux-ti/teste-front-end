@@ -18,6 +18,11 @@ export default {
   name: 'UserSelec',
   components: {
     Repos,
+  },
+  mounted() {
+    fetch('http://localhost:3000/favoritos')
+      .then(resposta => resposta.json())
+      .then(dados => console.log(dados))
   }
 }
 </script>
@@ -41,5 +46,6 @@ export default {
   padding-left: 18px;
 }
 </style>
+
 
 

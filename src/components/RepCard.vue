@@ -6,7 +6,7 @@
             <p>{{ descricao }}</p>
 
             <div class="container-repo-star">
-                <img src="/img/star.png" alt="Logo GitHub" class="star">
+                <img src="/img/star.png" alt="Logo GitHub" class="star" @click="favoritar">
                 <p>{{ stars }}</p>
             </div>
         </div>
@@ -18,10 +18,29 @@
 <script>
 export default {
     name: 'RepCard',
-    props:{
+    props: {
         titulo: String,
         descricao: String,
-        stars: Number
+        stars: Number,
+        id: Number
+    },
+    methods: {
+        favoritar() {
+            fetch('http://localhost:3000/favoritos', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    titulo: this.titulo,
+                    descricao: this.descricao,
+                    stars: this.stars,
+                    id: this.id
+                })
+            })
+
+        }
     },
     data() {
         return {

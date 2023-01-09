@@ -1,81 +1,34 @@
 {
-    "ingredientes": {
-      "paes": [
-        {
-          "id": 1,
-          "tipo": "Italiano Branco"
-        },
-        {
-          "id": 2,
-          "tipo": "3 Queijos"
-        },
-        {
-          "id": 3,
-          "tipo": "Parmesão e Orégano"
-        },
-        {
-          "id": 4,
-          "tipo": "Integral"
-        }
-      ],
-      "carnes": [
-        {
-          "id": 1,
-          "tipo": "Maminha"
-        },
-        {
-          "id": 2,
-          "tipo": "Alcatra"
-        },
-        {
-          "id": 3,
-          "tipo": "Picanha"
-        },
-        {
-          "id": 4,
-          "tipo": "Veggie burger"
-        }
-      ],
-      "opcionais": [
-        {
-          "id": 1,
-          "tipo": "Bacon"
-        },
-        {
-          "id": 2,
-          "tipo": "Cheddar"
-        },
-        {
-          "id": 3,
-          "tipo": "Salame"
-        },
-        {
-          "id": 4,
-          "tipo": "Tomate"
-        },
-        {
-          "id": 4,
-          "tipo": "Cebola roxa"
-        },
-        {
-          "id": 4,
-          "tipo": "Pepino"
-        }
-      ]
+  "favoritos": [
+    {
+      "titulo": "aluraquiz-base",
+      "descricao": "Projeto construido durante a Imersão React edição NextJS da Alura!",
+      "stars": 1330,
+      "id": 331761634
     },
-    "status": [
-      {
-        "id": 1,
-        "tipo": "Solicitado"
-      },
-      {
-        "id": 2,
-        "tipo": "Em produção"
-      },
-      {
-        "id": 3,
-        "tipo": "Finalizado"
-      }
-    ],
-    "burgers": []
-  }
+    {
+      "titulo": "react",
+      "descricao": "Cheatsheets for experienced React developers getting started with TypeScript",
+      "stars": 38831,
+      "id": 135786093
+    },
+    {
+      "titulo": "vue",
+      "descricao": "🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.",
+      "stars": 201667,
+      "id": 11730342
+    },
+    {
+      "titulo": "testem",
+      "descricao": "Test'em 'Scripts! A test runner that makes Javascript unit testing fun.",
+      "stars": 2951,
+      "id": 2034023
+    },
+    {
+      "titulo": "Rudra",
+      "descricao": "Rust Memory Safety & Undefined Behavior Detection",
+      "stars": 1165,
+      "id": 309803886
+    }
+  ]
+}
