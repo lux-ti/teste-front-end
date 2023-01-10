@@ -2,7 +2,7 @@
   <header>
     <nav class="box_navegacao">
       <router-link to="/" class="logo">
-        <img src="../assets/image/GitHub Search.png" alt="logomarca" />
+        <img src="../assets/image/GitHubSearch.png" alt="logomarca" />
       </router-link>
       <div>
         <router-link to="/">INÍCIO </router-link>
