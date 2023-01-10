@@ -73,6 +73,18 @@ export default {
 .container-user-info h2 {
     font-size: 36px;
 }
+
+@media (max-width: 768px) {
+    .container-user img {
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+    }
+
+    .container-user-info h2 {
+        font-size: 20px;
+    }
+}
 </style>
 
 

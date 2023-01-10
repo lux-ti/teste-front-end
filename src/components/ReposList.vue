@@ -82,5 +82,17 @@ button:hover {
   background: #000000;
   color: #FFFFFF;
 }
+
+@media (max-width: 768px) {
+  img {
+    display: none;
+  }
+
+  .main-container {
+    text-align: center;
+    padding: 0px;
+    margin: 10px;
+  }
+}
 </style>
 

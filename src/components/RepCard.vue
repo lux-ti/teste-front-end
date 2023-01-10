@@ -5,7 +5,7 @@
             <div class="titulo-star">
                 <h2>{{ titulo }}</h2>
                 <button @click="manipularFavorito()">
-                    <img src="/img/blackstar.png" alt="Logo GitHub" class="star">
+                    <img src="/img/blackstar.png" alt="Logo GitHub" class="black-star">
                 </button>
             </div>
             <p>{{ descricao }}</p>
@@ -93,6 +93,30 @@ button {
     border: none;
     background-color: #FFFFFF;
     cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .container-repo-info p {
+        font-size: 12px;
+        color: #757575;
+    }
+
+    .container-repo-info h2 {
+        font-size: 20px;
+    }
+
+    .black-star {
+        width: 45px;
+        height: 45px;
+    }
+
+    .main-container-repo {
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+
 
 }
 </style>

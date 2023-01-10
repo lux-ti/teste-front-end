@@ -64,6 +64,10 @@ export default {
 </script>
 
 <style scoped>
+.main-container {
+    text-align: center;
+}
+
 .home-botao {
     padding-bottom: 46px;
 }
@@ -107,5 +111,15 @@ button {
 button:hover {
     background-color: #000000;
     color: #FFFFFF;
+}
+
+@media (max-width: 962px) {
+    .home-search {
+        width: 100%;
+    }
+
+    button {
+        margin-top: 12px;
+    }
 }
 </style>

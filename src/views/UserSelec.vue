@@ -87,4 +87,24 @@ button:hover {
     background: #000000;
     color: #FFFFFF;
 }
+
+@media (max-width: 768px) {
+    .main-container-userselec {
+        font-family: 'Rubik';
+        display: grid;
+        text-align: center;
+        margin: 50px;
+    }
+
+    .repo-list {
+        text-align: center;
+        padding: 10px;
+        width: 100%;
+    }
+
+    ul {
+        margin-top: 20px;
+        padding: 0px;
+    }
+}
 </style>

@@ -43,6 +43,19 @@ nav a {
 nav a:hover {
     color: red;
 }
+
+@media (max-width: 768px) {
+
+    img {
+        display: none;
+    }
+
+    nav {
+        text-align: center;
+        display: block;
+    }
+
+}
 </style>
   
   

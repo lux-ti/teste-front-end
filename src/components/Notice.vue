@@ -2,7 +2,7 @@
     <div class="show-notice">
         <dialog class="dialog" @open="showNotice">
 
-            <img src="/img/aviso.png" alt="Aviso">
+            <img class="exclamacao" src="/img/aviso.png" alt="Aviso">
             <p class="desculpe">Desculpe!</p>
             <p class="aviso">Não foi possível encontrar o repositório ou usuário desejado!</p>
             <button class="botao-fechar" @click="closeNotice">Certo</button>
@@ -84,5 +84,36 @@ export default {
 
 .aviso {
     font-size: 24px;
+}
+
+@media (max-width: 768px) {
+
+    .dialog {
+        width: 200px;
+        height: 280px;
+    }
+
+    .exclamacao {
+        margin-top: 0px;
+        width: 40px;
+        height: 40px;
+
+    }
+
+    .desculpe {
+        font-size: 32px;
+    }
+
+    .aviso {
+        font-size: 12px;
+    }
+
+    .botao-fechar {
+        width: 70px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+
 }
 </style>

@@ -66,4 +66,22 @@ li {
   list-style: none;
   border-bottom: 1px solid #000000;
 }
+
+@media (max-width: 768px) {
+  img {
+    display: none;
+  }
+
+  .main-container {
+    text-align: center;
+    padding: 0px;
+    margin: 10px;
+  }
+
+
+  .title-fav {
+    font-size: 30px;
+  }
+
+}
 </style>
