@@ -1,6 +1,6 @@
 <template>
   <div class="container_inicial">
-    <img class="image_github" src="../assets/image/Vector.png" alt="" />
+    <img class="image_github" src="/src/assets/image/Vector.png" alt="" />
     <h1 class="title">Repositórios Favoritos</h1>
   </div>
   

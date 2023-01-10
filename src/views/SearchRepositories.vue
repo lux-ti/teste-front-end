@@ -29,7 +29,7 @@
         </div>
         <p class="description">{{ item.description }}</p>
         <div class="star_count">
-          <img src="../assets/star.svg" alt="" />{{ item.stargazers_count }}
+          <img src="/src/assets/star.svg" alt="" />{{ item.stargazers_count }}
         </div>
       </li>
     </ul>

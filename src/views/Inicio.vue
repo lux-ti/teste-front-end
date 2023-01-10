@@ -1,6 +1,6 @@
 <template>
   <div class="inicio">
-    <img src="../assets/image/Vector (1).png" alt="" />
+    <img src="/src/assets/image/github.png" alt="" />
     <div class="buttons">
 
       <input id="radio_rep" type="radio" name="op" />

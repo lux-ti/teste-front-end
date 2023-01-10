@@ -26,8 +26,8 @@
             <img
               v-bind:src="
                 repositorio.favorite
-                  ? 'src/assets/staryellow.svg'
-                  : 'src/assets/star.svg'
+                  ? '/src/assets/staryellow.svg'
+                  : '/src/assets/star.svg'
               "
             />
           </a>
@@ -40,7 +40,7 @@
           }}
         </p>
         <div class="containerStar">
-          <img src="../assets/star.svg" alt="" />
+          <img src="/src/assets/star.svg" alt="" />
           {{ repositorio.stargazers_count }}
         </div>
       </div>
