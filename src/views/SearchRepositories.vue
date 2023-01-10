@@ -21,8 +21,8 @@
             <img
               v-bind:src="
                 item.favorite
-                  ? 'src/assets/staryellow.svg'
-                  : 'src/assets/star.svg'
+                  ? '/src/assets/staryellow.svg'
+                  : '/src/assets/star.svg'
               "
             />
           </a>
@@ -42,7 +42,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      estrela: "src/assets/star.svg",
+      estrela: "/src/assets/star.svg",
       items: [],
       message: "",
       favoritos: [],
