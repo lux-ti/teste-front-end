@@ -26,8 +26,8 @@
             <img
               v-bind:src="
                 repositorio.favorite
-                  ? 'src/assets/staryellow.svg'
-                  : 'src/assets/star.svg'
+                  ? '/src/assets/staryellow.svg'
+                  : '/src/assets/star.svg'
               "
             />
           </a>
