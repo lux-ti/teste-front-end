@@ -13,7 +13,7 @@ export default {
             </router-link>
             <nav class="menu">
                 <router-link to="/">Inicío</router-link>
-                <router-link to="/favoritos">Favoritos</router-link>
+                <router-link to="/favorites">Favoritos</router-link>
             </nav>
         </div>
     </header>
