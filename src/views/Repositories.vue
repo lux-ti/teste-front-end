@@ -9,9 +9,23 @@ export default {
   components: { RepositoriesList, Error },
 
   setup() {
-    const { loadMore, dataItems, loading, error, data, finishedList } = useGetData();
+    const { 
+      loadMore, 
+      dataItems, 
+      loading, 
+      error, 
+      data, 
+      finishedList 
+    } = useGetData();
 
-    return { loadMore, dataItems, loading, error, data, finishedList };
+    return { 
+      loadMore, 
+      dataItems, 
+      loading, 
+      error, 
+      data, 
+      finishedList 
+    };
   },
 
   computed: {
