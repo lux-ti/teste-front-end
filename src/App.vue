@@ -1,12 +1,13 @@
 <script>
-import Navbar from "./components/Navbar.vue";
+import Navig from "./components/Navbar.vue";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 export default {
-    components: { Navbar },
+    components: { Navig },
 };
 </script>
 
 <template>
-    <Navbar/>
+    <Navig/>
     <router-view/>
 </template>
 

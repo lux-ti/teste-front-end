@@ -1,11 +1,11 @@
 <script>
 export default {
-    name: "header",
+    name: "navig",
 };
 </script>
 
 <template>
-    <header class="header">
+    <header class="navigation">
         <div class="container">
             <router-link to="/" class="title">
                 <span class="github">GitHub</span>
@@ -24,14 +24,14 @@ export default {
     color: #000;
 }
 
-.header {
+.navigation {
     padding-left: 20px;
     padding-right: 20px;
     background: #D9D9D9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.header .container {
+.navigation .container {
     display: flex;
     justify-content: space-between;
     align-items: center;

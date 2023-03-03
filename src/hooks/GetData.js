@@ -2,7 +2,7 @@ import { onMounted, ref } from "vue";
 import useFetch from "./Fetch";
 import { router } from "../routes";
 import { useRoute } from "vue-router";
-import GithubApi from "../Api-Links";
+import GithubApi from "../ApiLinks";
 
 const githubApi = new GithubApi();
 

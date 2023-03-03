@@ -2,7 +2,7 @@
 import { router } from "../routes";
 import useFetch from "../hooks/Fetch";
 import SearchError from "../components/SearchError.vue";
-import GithubApi from "../Api-Links";
+import GithubApi from "../ApiLinks";
 
 const githubApi = new GithubApi();
 
@@ -148,7 +148,7 @@ form {
 }
 
 .options label {
-    border: 2px solid black;
+    border: 2px solid #000;
     border-radius: 5px;
     padding: 0.5rem;
     width: 186px;
