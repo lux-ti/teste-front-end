@@ -12,8 +12,8 @@ export default {
     components: { SearchError },
 
     setup() {
-        const { data, loading, error, fetchData, resetStates } = useFetch();
-        return { error, data, loading, fetchData, resetStates };
+        const { data, error, fetchData, resetStates } = useFetch();
+        return { error, data, fetchData, resetStates };
     },
 
     data() {
@@ -57,6 +57,7 @@ export default {
     
     <main class="home">
         <div class="container">
+            <i class="fa-brands fa-github"></i>
             <form>
                 <div class="options">
                     <input 
@@ -88,9 +89,8 @@ export default {
                     <button 
                         title="Procurar" 
                         @click.prevent="searchHandler" 
-                        v-if="!loading"
                     >
-                    <!-- icone de lupa -->
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
             </form>
@@ -104,6 +104,19 @@ export default {
 </template>
 
 <style scoped>
+.fa-github {
+    font-size: 8rem;
+    padding-top: 2rem;
+}
+
+.fa-magnifying-glass {
+    font-size: 1rem;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
 .home {
     text-align: center;
 }
@@ -127,7 +140,7 @@ form {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     border: 2px solid #000;
-    padding: 1.2rem 2rem;
+    padding: 1.2rem 4rem 1.2rem 2rem;
     width: 100%;
 }
 
@@ -141,6 +154,8 @@ form {
     right: 1rem;
     height: 1.7rem;
     width: 1.7rem;
+    background: none;
+    border: none;
 }
 
 .options {

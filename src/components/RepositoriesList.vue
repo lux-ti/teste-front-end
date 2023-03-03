@@ -59,5 +59,20 @@ ul {
 .repo-name, .description, .stars {
     padding-bottom: 1rem;
 }
+
+.div-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.25rem 1rem;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+}
 </style>
   
