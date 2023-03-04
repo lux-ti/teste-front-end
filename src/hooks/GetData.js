@@ -38,10 +38,10 @@ const useGetData = () => {
   };
 
   const loadMore = async () => {
-    ++currentPage.value;
-
+    currentPage.value++;
+    
     await fetchData(
-      githubApi.getSearchUrl(query.value, option.value)
+      githubApi.getSearchUrl(query.value, option.value, currentPage.value)
     );
 
     dataItems.value = [...dataItems.value, ...data.value.items];

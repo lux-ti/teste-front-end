@@ -55,10 +55,14 @@ export default {
     <p v-if="error">Ocorreu um erro. Tente novamente.</p>
 
     <div class="content">
-      <RepositoriesList v-if="listRepos.length" :repositoriesList="listRepos" @loadMore="loadMoreRepos"
-        :listHasFinished="listHasFinished" class="repos-user" />
+      <RepositoriesList 
+        v-if="listRepos.length" 
+        :repositoriesList="listRepos" 
+        @loadMore="loadMoreRepos"
+        :listHasFinished="listHasFinished" 
+      />
 
-      <p v-if="!totalUserRepos">
+      <p v-if="listHasFinished" class="finished-list">
         Este usuário não possui repositórios.
       </p>
     </div>
@@ -75,5 +79,15 @@ export default {
 
 .content {
   width: 100%;
+}
+
+.finished-list {
+  margin-bottom: 1rem;
+  padding: auto;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ff0000;
+  top: -2rem;
 }
 </style>
