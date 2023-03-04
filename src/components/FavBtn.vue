@@ -1,15 +1,15 @@
 <script>
-import { computed } from "vue";
-import store from "../FavoritesStore";
+import Store from "../FavoritesStore";
 
 export default {
     name: "FavBtn",
     props: ["repo"],
     setup() {
-        const state = computed(() => store.state);
+        const store = new Store()
 
         const addFav = (repoObj) => {
             store.actions.addFav(repoObj);
+            console.log(store.state.favoritesRepositories)
         };
 
         const removeFav = (id) => {
@@ -17,7 +17,7 @@ export default {
         };
 
         return {
-            state,
+            store,
             addFav,
             removeFav,
         };
@@ -37,7 +37,7 @@ export default {
 
     computed: {
         repoIsFavorited() {
-            return this.state.favoritesRepositories.some(
+            return this.store.state.favoritesRepositories.some(
                 (repository) => repository.id === this.repo.id
             );
         },
@@ -46,13 +46,11 @@ export default {
 </script>
     
 <template>
-    <button class="btn-favorite" 
-        :class="repoIsFavorited ? 'favorited' : ''"
+    <button class="btn-favorite" :class="repoIsFavorited ? 'favorited' : ''"
         @click="repoIsFavorited ? removeFav(repo.id) : favoriteRepoHandler(repo)"
         :title="repoIsFavorited ? 'desmarcar como favorito' : 'marcar como favorito'">
-        
-        <i class="fa-regular fa-star"></i>
 
+        <i class="fa-regular fa-star"></i>
     </button>
 </template>
 
@@ -65,7 +63,7 @@ export default {
 }
 
 .btn-favorite.favorited {
-    color: #FFC700;
+    color: #e1bb2e;
 }
 </style>
   

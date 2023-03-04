@@ -39,7 +39,6 @@ export default {
 <style scoped>
 .container {
     padding: 1rem 3rem;
-
 }
 
 ul {

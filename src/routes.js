@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-function showComponent(view) {
+function showView(view) {
   return () => import(`./views/${view}.vue`);
 }
 
@@ -8,33 +8,33 @@ const routes = [
   { 
     path: "/", 
     name: "Home", 
-    component: showComponent("Home") 
+    component: showView("Home") 
   },
   { 
     path: "/favorites", 
     name: "favorites", 
-    component: showComponent("Favorites") 
+    component: showView("Favorites") 
   },
   {
     path: "/repositories",
     name: "repositories",
-    component: showComponent("Repositories"),
+    component: showView("Repositories"),
   },
   {
     path: "/users",
     name: "users",
-    component: showComponent("Users"),
+    component: showView("Users"),
   },
   {
     path: "/user/:username",
     name: "user",
-    component: showComponent("InfoUser"),
+    component: showView("InfoUser"),
     props: true,
   },
   {
     path: "/:notFound(.*)",
     name: "notfound",
-    component: showComponent("NotFound"),
+    component: showView("NotFound"),
   },
 ];
 
