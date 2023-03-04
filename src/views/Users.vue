@@ -96,6 +96,7 @@ ul {
     display: flex;
     justify-content: center;
     margin: 2rem auto;
+    cursor: pointer;
 }
 
 .user-item {

@@ -65,7 +65,7 @@ export default {
 }
 
 .btn-favorite.favorited {
-    color: #e1bb2e;
+    color: #FFC700;
 }
 </style>
   

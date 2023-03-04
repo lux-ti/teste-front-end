@@ -29,7 +29,7 @@ export default {
         </ul>
 
         <div class="div-btn" v-if="!FinishedList">
-            <button @click="$emit('loadMore')" class="btn">Ver mais</button>
+            <button @click="$emit('loadMore')" class="btn">Ver mais repositórios</button>
         </div>
 
         <p v-if="FinishedList" class="no-more-results">Não há mais resultados</p>
@@ -73,6 +73,7 @@ ul {
     display: flex;
     justify-content: center;
     margin: 2rem auto;
+    cursor: pointer;
 }
 </style>
   

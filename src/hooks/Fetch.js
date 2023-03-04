@@ -13,11 +13,11 @@ const useFetch = () => {
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        if (response.status === 403) {
-          throw new Error(
-            "Usuário excedeu o limite da taxa de requisições. Tente novamente em breve."
-          );
-        }
+        // if (response.status === 403) {
+        //   throw new Error(
+        //     "Taxa de requisição excedida. Tente novamente mais tarde."
+        //   );
+        // }
         throw new Error("Nenhum resultado encontrado/URL inválida");
       }
       const jsonData = await response.json();
