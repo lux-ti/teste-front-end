@@ -1,6 +1,5 @@
 <script>
 import Store from "../FavoritesStore";
-const store = new Store()
 
 export default {
     name: "FavBtn",
@@ -8,24 +7,24 @@ export default {
     setup() {
 
         const addFav = (repoObj) => {
-            store.actions.addFav(repoObj);
-            console.log(store.getFavoritesRepositories());
+            Store.actions.addFav(repoObj);
+            console.log(Store.getFavoritesRepositories());
         };
 
         const removeFav = (id) => {
-            store.actions.removeFav(id);
-            console.log(store.getFavoritesRepositories());
+            Store.actions.removeFav(id);
+            console.log(Store.getFavoritesRepositories());
         };
 
         return {
-            store,
+            Store,
             addFav,
             removeFav,
         };
     },
     computed: {
         repoIsFavorited() {
-            return this.store.state.favoritesRepositories.some(
+            return this.Store.state.favoritesRepositories.some(
                 (repository) => repository.id === this.repo.id
             );
         },

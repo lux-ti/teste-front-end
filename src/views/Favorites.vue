@@ -16,8 +16,6 @@
 import RepositoriesList from "../components/RepositoriesList.vue";
 import Store from '../FavoritesStore';
 
-const store = new Store();
-
 export default {
   name: "Favoritos",
   data() {
@@ -32,7 +30,7 @@ export default {
   },
   computed: {
     favoritedRepositories() {
-      return store.getFavoritesRepositories();
+      return Store.getFavoritesRepositories();
     },
     repositoriesList() {
       if (this.favoritedRepositories)
