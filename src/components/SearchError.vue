@@ -9,7 +9,7 @@ export default {
   <Teleport to="body">
     <div class="notification" @click.self="$emit('onClose')">
       <div class="alert">
-        <!-- icone de exclamação -->
+        <i class="fa-solid fa-circle-exclamation"></i>
         <h2>Desculpe!</h2>
         <p>Não foi possível encontrar o repositório ou usuário desejado!</p>
         <button @click="$emit('onClose')">Certo</button>
@@ -20,6 +20,12 @@ export default {
 
 
 <style scoped>
+.fa-circle-exclamation {
+  color: #c50000;
+  font-size: 8rem;
+  padding-top: 2rem;
+}
+
 .notification {
   position: fixed;
   top: 0;
