@@ -1,40 +1,38 @@
 <script>
 import Store from "../FavoritesStore";
+const store = new Store()
 
 export default {
     name: "FavBtn",
     props: ["repo"],
     setup() {
-        const store = new Store()
+        const addFavorite = (repoObj) => {
+            const newRepo = {
+                id: repoObj.id,
+                name: repoObj.name,
+                description: repoObj.description,
+                stargazers_count: repoObj.stargazers_count,
+            };
+            store.actions.addFav(newRepo);
+            console.log(store.state.favoritesRepositories);
+        }
 
         const addFav = (repoObj) => {
             store.actions.addFav(repoObj);
-            console.log(store.state.favoritesRepositories)
         };
 
         const removeFav = (id) => {
             store.actions.removeFav(id);
+            console.log(store.getFavoritesRepositories());
         };
 
         return {
             store,
             addFav,
             removeFav,
+            addFavorite,
         };
     },
-
-    methods: {
-        favoriteRepoHandler(repoObj) {
-            const newRepo = {
-                name: repoObj.name,
-                description: repoObj.description,
-                stargazers_count: repoObj.stargazers_count,
-                id: repoObj.id,
-            };
-            this.addFav(newRepo);
-        },
-    },
-
     computed: {
         repoIsFavorited() {
             return this.store.state.favoritesRepositories.some(
@@ -47,9 +45,8 @@ export default {
     
 <template>
     <button class="btn-favorite" :class="repoIsFavorited ? 'favorited' : ''"
-        @click="repoIsFavorited ? removeFav(repo.id) : favoriteRepoHandler(repo)"
+        @click="repoIsFavorited ? removeFav(repo.id) : addFavorite(repo)"
         :title="repoIsFavorited ? 'desmarcar como favorito' : 'marcar como favorito'">
-
         <i class="fa-regular fa-star"></i>
     </button>
 </template>
