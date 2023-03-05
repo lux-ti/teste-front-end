@@ -6,19 +6,10 @@ export default {
     name: "FavBtn",
     props: ["repo"],
     setup() {
-        const addFavorite = (repoObj) => {
-            const newRepo = {
-                id: repoObj.id,
-                name: repoObj.name,
-                description: repoObj.description,
-                stargazers_count: repoObj.stargazers_count,
-            };
-            store.actions.addFav(newRepo);
-            console.log(store.state.favoritesRepositories);
-        }
 
         const addFav = (repoObj) => {
             store.actions.addFav(repoObj);
+            console.log(store.getFavoritesRepositories());
         };
 
         const removeFav = (id) => {
@@ -30,7 +21,6 @@ export default {
             store,
             addFav,
             removeFav,
-            addFavorite,
         };
     },
     computed: {
@@ -44,8 +34,9 @@ export default {
 </script>
     
 <template>
-    <button class="btn-favorite" :class="repoIsFavorited ? 'favorited' : ''"
-        @click="repoIsFavorited ? removeFav(repo.id) : addFavorite(repo)"
+    <button class="btn-favorite" 
+        :class="repoIsFavorited ? 'favorited' : ''"
+        @click="repoIsFavorited ? removeFav(repo.id) : addFav(repo)"
         :title="repoIsFavorited ? 'desmarcar como favorito' : 'marcar como favorito'">
         <i class="fa-regular fa-star"></i>
     </button>
