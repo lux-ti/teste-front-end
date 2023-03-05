@@ -56,5 +56,11 @@ h2 {
   font-size: 45px;
   font-weight: 300;
 }
+
+p {
+  display: flex;
+  justify-content: center;
+  padding: 10rem;
+}
 </style>
   

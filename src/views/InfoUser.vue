@@ -59,15 +59,19 @@ export default {
                 </p>
 
                 <span aria-label="empresa atual" v-if="data.company">
+                    <img class="icon" src="../Images/company.png" alt="icon-company">
                     {{ data.company }}
                 </span>
                 <span aria-label="localização" v-if="data.location">
+                    <img class="icon" src="../Images/location.png" alt="icon-location">
                     {{ data.location }}
                 </span>
                 <span aria-label="repositórios públicos">
+                    <img class="icon" src="../Images/public_repos.png" alt="icon-public-repos">
                     {{ data.public_repos }}
                 </span>
                 <span aria-label="seguidores">
+                    <img class="icon" src="../Images/followers.png" alt="icon-followers">
                     {{ data.followers }}
                 </span>
             </section>
@@ -112,13 +116,14 @@ span {
 }
 
 span {
+    display: flex;
     margin: 0.5rem 0;
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
-
+    align-items: center;
 }
 
 .userInfo {
@@ -131,5 +136,11 @@ span {
     display: flex;
     flex-direction: column;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.icon {
+    margin: 0;
+    padding: 0;
+    padding-right: 8px;
 }
 </style>
