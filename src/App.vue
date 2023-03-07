@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ <div>Teste Front End</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import GitApi from './services/gitApi'
+  export default {
+    mounted(){
+      const user = 'biancaquintan'
+      const repo = 'teste-front-end'
+      
+      GitApi.user_search(user).then(response => {
+        console.log(response)
+      })
+      
+      GitApi.repository_search(repo).then(response => {
+        console.log(response)
+      })
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+      GitApi.user_details(user).then(response => {
+        console.log(response.data)
+      })
+
+      GitApi.my_favorites(user).then(response => {
+        console.log(response.data)
+      })
+
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
