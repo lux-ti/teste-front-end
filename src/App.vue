@@ -1,6 +1,8 @@
 <template>
   <NavBar />
-  <router-view/>
+  <div id="main">
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -20,5 +22,8 @@
   }
   body {
     margin: 0;
+  }
+  #main {
+    padding: 3%;
   }
 </style>

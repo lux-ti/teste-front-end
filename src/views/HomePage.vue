@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="home">
     <img alt="github logo" src="../assets/vector.png" class="logo">
     <form action="" @submit="search($event)">
       <div id="buttons">
@@ -8,7 +8,7 @@
       </div>
       <div class="searchInput">
         <input type="text" v-model="username" placeholder="Buscar..." />
-        <button @click="searchUser" class="searchButton">
+        <button class="searchButton">
           <img alt="Search Icon" src="../assets/searchIcon.svg" class="icon">
         </button>
       </div>
@@ -30,20 +30,19 @@
       search(e){
         // const username = this.username
         e.preventDefault();
-        this.$router.push({ path:`/search_user`})
+        this.$router.push({ name:`search_user`, params: { username: this.username }})
       }
     }
   }
 
 </script>
 
-<style>
-  #main {
+<style scoped>
+  #home {
     padding: 10%;
     display: block;
     text-align: center;
   }
-
   .btn {
     background-color: #fff;
     color: #000000;
@@ -53,7 +52,6 @@
     margin: 10px;
     font-weight: 700;
   }
-
   .btn.active {
     background-color: #000000;
     color: #fff
@@ -62,7 +60,6 @@
   #buttons {
     margin: 15px;
   }
-
   .searchInput {
     display: inline-flex;
     align-items: center;
@@ -73,13 +70,11 @@
     border-radius: 10px;
     padding: 5px;
   }
-
   .searchInput input {
     font-size: 1.5rem;
     height: inherit;
     border: none;
   }
-
   .searchButton{
     background: transparent;
     border: none;

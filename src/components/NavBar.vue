@@ -16,14 +16,14 @@
   
 </script>
 
-<style>
+<style scoped>
   nav {
     background-color: #D9D9D9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 15px 80px 15px 30px;
   }
 
-  nav span {
+  span {
     width: 298px;
     height: 84px;
     font-family: 'Inter';
@@ -31,11 +31,11 @@
     color: #000000;
   }
 
-  nav ul {
+  ul {
     float: right;
   }
 
-  nav ul li {
+  ul li {
     display: inline-flex;
     padding-left: 20px;
   }
