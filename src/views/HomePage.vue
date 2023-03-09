@@ -39,7 +39,6 @@
 
 <style scoped>
   #home {
-    padding: 10%;
     display: block;
     text-align: center;
   }
