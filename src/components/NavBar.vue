@@ -8,7 +8,7 @@
         <router-link :to="{ name: 'my_favorites' }">FAVORITOS</router-link>
       </li>
     </ul>
-    <span><strong>Github</strong> Search</span>
+    <span><strong>Github</strong> <i>Search</i></span>
   </nav>
 </template>
 
@@ -27,7 +27,7 @@
     width: 298px;
     height: 84px;
     font-family: 'Inter';
-    font-size: 32px;
+    font-size: 30px;
     color: #000000;
   }
 
@@ -39,5 +39,16 @@
     display: inline-flex;
     padding-left: 20px;
   }
+  
+  li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 700;
+  }
+
+  li a:hover {
+    color:crimson;
+  }
+
 
 </style>
