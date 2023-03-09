@@ -4,7 +4,7 @@
   <div class="search-result">
     <ul>
       <li v-for="item in items" :key="item.id">
-        <router-link :to="{ name: 'user_details' }">
+        <router-link :to="{ name: 'user_details', params: { user: item.login } }">
           <img width="100" v-bind:src="item.avatar_url"/>
           <p>{{ item.login }}</p>
         </router-link>
@@ -37,14 +37,11 @@
       //   console.log(response)
       // })
   
-      // GitApi.user_details(user).then(response => {
-      //   console.log(response.data)
-      // })
-  
       // GitApi.my_favorites(user).then(response => {
       //   console.log(response.data)
       // })
     },
+
   }
 
 </script>

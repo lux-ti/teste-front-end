@@ -10,8 +10,12 @@ export default {
     return http.get(`search/repositories?q=${repo}`)
   },
 
-  user_details:(username) => {
-    return http.get(`users/${username}`)
+  user_details:(user) => {
+    return http.get(`users/${user}`)
+  },
+
+  user_repositories:(user) => {
+    return http.get(`users/${user}/repos`)
   },
 
   my_favorites:(username) => {

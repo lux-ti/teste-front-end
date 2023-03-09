@@ -1,5 +1,45 @@
 <template>
- <div></div>
+  <section>
+    <aside>
+      <div class="info-header">
+        <img v-bind:src="user.avatar_url" alt="avatar user" class="avatar">
+        <p>
+          <label>{{ user.name }}</label>
+          <br>
+          <span>{{ user.login }}</span>
+        </p>
+      </div>
+      <ul class="content-info">
+        <li>
+          <img src="../assets/organization.svg" alt="organization icon" class="icon">
+          <span>{{ user.company }}</span>
+        </li>
+        <li>
+          <img src="../assets/location.svg" alt="location icon" class="icon">
+          <span>{{ user.location }}</span>
+        </li>
+        <li>
+          <img src="../assets/repository.svg" alt="repository icon" class="icon">
+          <span>{{ user.public_repos }}</span>
+        </li>
+        <li>
+          <img src="../assets/followers.svg" alt="followers icon" class="icon">
+          <span>{{ user.followers }}</span>
+        </li>
+      </ul>
+    </aside>
+    <div id="userRepos">
+      <ul>
+        <li v-for="repo in repos" :key="repo.id">
+          <!-- <img src="../assets/star.svg" alt="star icon" class="icon" style="float: right; background: #FFC700;"> -->
+          <h1>{{ repo.name }}</h1>
+          <p>{{ repo.description }}</p>
+          <span><img src="../assets/star.svg" alt="star icon" class="icon">{{ repo.stargazers_count }}</span>
+          <hr>
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -8,19 +48,95 @@
   export default {
     data() {
       return {
-        
+        user: '',
+        repos: []
       }
     },
 
     mounted(){   
-      GitApi.user_details('user').then(response => {
-        console.log(response.data)
-      })
+      if(this.$route.params.user){
+        GitApi.user_details(this.$route.params.user).then(response => {
+          this.user = response.data
+        })
+        
+        GitApi.user_repositories(this.$route.params.user).then(response => {
+          this.repos = response.data
+          console.log(response.data)
+        })
+      }
 
     }
   }
 </script>
 
-<style>
+<style scoped>
+  section {
+    display: flex;
+  }
+  aside {
+    max-width: 25%;
+    height: max-content;
+    background: #D9D9D9;
+    border-radius: 5px;
+    padding: 2%;   
+  }
+  div#userRepos {
+    max-width: 75%;
+    margin: 0 5%;
+  }
 
+  .content-info {
+    display: grid;
+    padding-left: 0;
+  }
+
+  .content-info li {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 8px;;
+  }
+
+  .icon {
+    margin-right: .5em;
+  }
+
+  .avatar {
+    height: 180px;
+    filter: drop-shadow(0px 0px 4px #000000);
+    border-radius: 5px;
+  }
+
+  .info-header label {
+    font-family: 'Rubik';
+    font-weight: 300;
+    font-size: 24px;
+  }
+
+  .content-info span {
+    font-size: 11px;
+  }
+
+  .info-header span,
+  .content-info span,
+  #userRepos p,
+  #userRepos span {
+    color: #757575;
+  }
+
+  #userRepos span {
+    font-size: small;
+  }
+
+  #userRepos img {
+    height: 18px;
+  }
+
+  #userRepos li {
+    list-style: none;
+  }
+
+  #userRepos h1 {
+    font-weight: 400;
+  }
 </style>
