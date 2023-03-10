@@ -4,7 +4,7 @@
   <div class="search-result">
     <ul>
       <li v-for="item in items" :key="item.id">
-        <router-link :to="{ name: 'user_details', params: { user: item.login } }">
+        <router-link :to="{ path: `/user_details/${item.login}` }">
           <img width="100" v-bind:src="item.avatar_url"/>
           <p>{{ item.login }}</p>
         </router-link>
@@ -32,10 +32,6 @@
           this.items = result.items
         })
       }
-      
-      // GitApi.repository_search(repo).then(response => {
-      //   console.log(response)
-      // })
   
       // GitApi.my_favorites(user).then(response => {
       //   console.log(response.data)
@@ -71,11 +67,6 @@
     font-size: 30px;
     line-height: 43px;
     margin: 2%;
-  }
-
-  .count {
-    font-size: 16px;
-    text-align: center;
   }
 
 </style>

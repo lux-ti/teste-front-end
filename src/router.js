@@ -11,7 +11,7 @@ const routes = [
     component: lazyLoad('HomePage') 
   },
   { 
-    path: "/user_details", 
+    path: "/user_details/:username", 
     name: "user_details", 
     component: lazyLoad('UserDetails')
   },

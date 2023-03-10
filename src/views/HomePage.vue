@@ -3,11 +3,11 @@
     <img alt="github logo" src="../assets/vector.png" class="logo">
     <form action="" @submit="search($event)">
       <div id="buttons">
-        <button class="btn">Repositório</button>
-        <button class="btn">Usuário</button>
+        <button class="btn" :class="current_search_type('repository')" @click.prevent="search_type('repository')">Repositório</button>
+        <button class="btn" :class="current_search_type('user')" @click.prevent="search_type('user')">Usuário</button>
       </div>
       <div class="searchInput">
-        <input type="text" v-model="username" placeholder="Buscar..." />
+        <input type="text" v-model="search_param" placeholder="Buscar..." />
         <button class="searchButton">
           <img alt="Search Icon" src="../assets/searchIcon.svg" class="icon">
         </button>
@@ -21,16 +21,31 @@
   export default {
     data() {
       return {
-        username: ""
+        search_param: "",
+        type_option: "repository"
       }
 
     },
 
     methods: {
       search(e){
-        // const username = this.username
         e.preventDefault();
-        this.$router.push({ name:`search_user`, params: { username: this.username }})
+        if(this.type_option === "repository"){
+          this.$router.push({ name:"search_repository", params: { repo: this.search_param }})
+        } else if(this.type_option === "user"){
+          this.$router.push({ name:"search_user", params: { username: this.search_param }})
+        }
+      },
+
+      search_type(type_option){
+        this.type_option = type_option
+      },
+
+      current_search_type(btn_name){
+        if(btn_name === this.type_option){
+          return 'active'
+        }
+        return ''
       }
     }
   }
@@ -58,6 +73,11 @@
 
   #buttons {
     margin: 15px;
+  }
+
+  .btn.active {
+    background: #000000;
+    color: #fff;
   }
   .searchInput {
     display: inline-flex;

@@ -28,16 +28,19 @@
         </li>
       </ul>
     </aside>
-    <div id="userRepos">
+    <div class="list-repos">
       <ul>
-        <li v-for="repo in repos" :key="repo.id">
+        <li v-for="(repo, index) in repos" :key="repo.id">
           <!-- <img src="../assets/star.svg" alt="star icon" class="icon" style="float: right; background: #FFC700;"> -->
-          <h1>{{ repo.name }}</h1>
-          <p>{{ repo.description }}</p>
-          <span><img src="../assets/star.svg" alt="star icon" class="icon">{{ repo.stargazers_count }}</span>
-          <hr>
+          <div v-if="index < max_repo">
+            <h1>{{ repo.name }}</h1>
+            <p>{{ repo.description }}</p>
+            <span><img src="../assets/star.svg" alt="star icon" class="icon">{{ repo.stargazers_count }}</span>
+            <hr>
+          </div>
         </li>
       </ul>
+      <button @click="max_repo = max_repo + 5">LOAD MORE 5</button>
     </div>
   </section>
 </template>
@@ -49,17 +52,18 @@
     data() {
       return {
         user: '',
-        repos: []
+        repos: [],
+        max_repo: 5
       }
     },
 
     mounted(){   
-      if(this.$route.params.user){
-        GitApi.user_details(this.$route.params.user).then(response => {
+      if(this.$route.params.username){
+        GitApi.user_details(this.$route.params.username).then(response => {
           this.user = response.data
         })
         
-        GitApi.user_repositories(this.$route.params.user).then(response => {
+        GitApi.user_repositories(this.$route.params.username).then(response => {
           this.repos = response.data
           console.log(response.data)
         })
@@ -80,63 +84,31 @@
     border-radius: 5px;
     padding: 2%;   
   }
-  div#userRepos {
-    max-width: 75%;
-    margin: 0 5%;
-  }
-
   .content-info {
     display: grid;
     padding-left: 0;
   }
-
   .content-info li {
     list-style: none;
     display: inline-flex;
     align-items: center;
     margin-bottom: 8px;;
   }
-
-  .icon {
-    margin-right: .5em;
-  }
-
   .avatar {
     height: 180px;
     filter: drop-shadow(0px 0px 4px #000000);
     border-radius: 5px;
   }
-
   .info-header label {
     font-family: 'Rubik';
     font-weight: 300;
     font-size: 24px;
   }
-
   .content-info span {
     font-size: 11px;
   }
-
   .info-header span,
-  .content-info span,
-  #userRepos p,
-  #userRepos span {
+  .content-info span {
     color: #757575;
-  }
-
-  #userRepos span {
-    font-size: small;
-  }
-
-  #userRepos img {
-    height: 18px;
-  }
-
-  #userRepos li {
-    list-style: none;
-  }
-
-  #userRepos h1 {
-    font-weight: 400;
   }
 </style>
