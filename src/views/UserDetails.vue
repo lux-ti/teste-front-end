@@ -40,7 +40,9 @@
           </div>
         </li>
       </ul>
-      <button @click="max_repo = max_repo + 5">LOAD MORE 5</button>
+      <center v-if="max_repo < repos.length">
+        <button @click="max_repo = max_repo + 5" class="load">Ver mais repositórios</button>
+      </center>
     </div>
   </section>
 </template>
@@ -53,7 +55,7 @@
       return {
         user: '',
         repos: [],
-        max_repo: 5
+        max_repo: 4
       }
     },
 
@@ -111,4 +113,5 @@
   .content-info span {
     color: #757575;
   }
+
 </style>

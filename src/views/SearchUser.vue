@@ -4,10 +4,10 @@
   <div class="search-result">
     <ul>
       <li v-for="item in items" :key="item.id">
-        <router-link :to="{ path: `/user_details/${item.login}` }">
-          <img width="100" v-bind:src="item.avatar_url"/>
-          <p>{{ item.login }}</p>
-        </router-link>
+          <router-link :to="{ path: `/user_details/${item.login}` }">
+            <img width="100" v-bind:src="item.avatar_url"/>
+            <p>{{ item.login }}</p>
+          </router-link>
       </li>
     </ul>
   </div>
@@ -32,10 +32,6 @@
           this.items = result.items
         })
       }
-  
-      // GitApi.my_favorites(user).then(response => {
-      //   console.log(response.data)
-      // })
     },
 
   }

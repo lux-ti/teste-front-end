@@ -3,14 +3,19 @@
   <hr>
   <div class="list-repos">
     <ul>
-      <li v-for="item in items" :key="item.id">
+      <li v-for="(item, index) in items" :key="item.id">
         <!-- <img src="../assets/star.svg" alt="star icon" class="icon" style="float: right; background: #FFC700;"> -->
-        <h1>{{ item.name }}</h1>
-        <p>{{ item.description }}</p>
-        <span><img src="../assets/star.svg" alt="star icon" class="icon">{{ item.stargazers_count }}</span>
-        <hr>
+        <div v-if="index < max_repo">
+          <h1>{{ item.name }}</h1>
+          <p>{{ item.description }}</p>
+          <span><img src="../assets/star.svg" alt="star icon" class="icon">{{ item.stargazers_count }}</span>
+          <hr>
+        </div>
       </li>
     </ul>
+    <center v-if="max_repo < items.length">
+      <button @click="max_repo = max_repo + 5" class="load">Ver mais</button>
+    </center>
   </div>
 </template>
 
@@ -21,7 +26,8 @@
     data() {
       return {
         total_count: 0,
-        items: []
+        items: [],
+        max_repo: 10
       }
     },
 

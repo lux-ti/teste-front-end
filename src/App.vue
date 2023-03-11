@@ -64,4 +64,9 @@
     text-align: center;
   }
 
+  button.load{
+    font-size: larger;
+    margin: 2%;
+    padding: .5em 1em;
+  }
 </style>
