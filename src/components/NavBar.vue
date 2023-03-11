@@ -1,11 +1,11 @@
 <template>
   <nav>
     <ul>
-      <li>
-        <router-link :to="{ name: 'homePage' }">INÍCIO</router-link>
+      <li class="active">
+        <router-link :to="{ name: 'homePage' }" exact-active-class="exact-active">INÍCIO</router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'my_favorites' }">FAVORITOS</router-link>
+        <router-link :to="{ name: 'my_favorites' }" exact-active-class="exact-active">FAVORITOS</router-link>
       </li>
     </ul>
     <span><strong>Github</strong> <i>Search</i></span>
@@ -13,7 +13,12 @@
 </template>
 
 <script>
-  
+  export default {
+
+    mount(){
+      console.log(this.$route)
+    }
+  }
 </script>
 
 <style scoped>
@@ -46,9 +51,8 @@
     font-weight: 700;
   }
 
-  li a:hover {
-    color:crimson;
+  .exact-active {
+    color: #FF0000;
   }
-
 
 </style>
