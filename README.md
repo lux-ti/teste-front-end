@@ -1,5 +1,6 @@
 # testevuejs
 link do teste rodando: https://teste-front-end-vue-js.vercel.app/
+link público do projeto: https://github.com/Everton-Cabral/Teste-Front-End-Vue.JS
 ## Project setup
 ```
 npm install
