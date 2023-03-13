@@ -4,7 +4,7 @@
         <img src="../assets/github.svg" alt="">
         <p>Repositórios favoritos</p>
     </div>
-    <ListRepositories :repositories="this.$store.state.likedRepositories"/>
+    <ListRepositories :repositories="this?.$store.state.likedRepositories"/>
     
     
 </template>
