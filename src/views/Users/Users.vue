@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="list-users">
-    <div class="card-users">
+    <div class="card-users" @click.prevent="profilePage()">
       <img src="@/assets/img/profile-photo.png" />
       <p>Limdemberg</p>
     </div>
@@ -23,6 +23,14 @@
 
 <script setup lang="ts">
 import { reactive, toRefs } from 'vue'
+import { useRouter } from 'vue-router'
+
+
+const router = useRouter()
+
+function profilePage() {
+  router.push({ name: 'profile' })
+}
 
 const data = reactive({
   dataRef: '' as string
@@ -55,16 +63,13 @@ const { dataRef } = toRefs(data)
   padding: 50px 70px;
 }
 
-.title-card {
-}
-
 .card-users {
+  cursor: pointer;
   display: flex;
-  box-shadow: 0px -2px 26px -10px rgba(0,0,0,0.6);
+  box-shadow: 0px -2px 26px -10px rgba(0, 0, 0, 0.6);
   width: 100%;
   border-radius: 10px;
   margin: 10px 30px;
-
 }
 .card-users p {
   margin: 20px 10px;

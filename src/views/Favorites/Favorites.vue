@@ -1,80 +1,55 @@
 <template>
   <div>
+    <div class="header">
+    <img src="@/assets/img/github-title.png" alt="" />
+    <div class="header-options">
+      <router-link to="/">Início</router-link>
+      <router-link to="/favorites">Favoritos</router-link>
+    </div>
+  </div>
     <div class="title">
       <img src="@/assets/img/github-logo.png" alt="" />
       <h1>Repositórios Favoritos</h1>
     </div>
-    <div class="list-repositorie">
-      <div class="repositorie">
-        <h1>Nome Repositorio</h1>
-        <p>Descrição Repositorio</p>
-        <div >
-          <img src="@/assets/img/star-icon.png" />
-          <span> 2 </span>
-        </div>
-        <hr />
-        <img class="fav-icon" src="@/assets/img/star-fav-icon.png"/>
-      </div>
-      <button class="show-more-button">Ver Mais</button>
-    </div>
+      <RepositoriesList />
+    
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import RepositoriesList from '@/components/RepositoriesList/RepositoriesList.vue'
+</script>
 
 <style scoped>
 h1 {
   font-family: sans-serif;
   margin-left: 1rem;
 }
-img {
+
+.title {
+  margin: 20px 30px;
+  display: flex;
+  align-items: center;
+}
+.title img {
   width: 60px;
 }
-.title {
-  margin-bottom: 2rem;
+
+.header {
   display: flex;
   align-items: center;
-}
-.list-repositorie {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.repositorie {
+  justify-content: space-between;
+  background-color: #d9d9d9;
   width: 100%;
-  position: relative;
-  font-family: sans-serif;
+  height: 5vh;
 }
-
-.repositorie h1 {
-  margin-top: 15px;
-  font-size: 36px;
-}
-.repositorie p {
-  margin-top: 1rem;
-  color: #757575;
-  font-size: 24px;
-}
-.repositorie div {
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.repositorie div span {
-  margin-top: 7px;
+.header-options > a {
+  text-decoration: none;
   margin-left: 10px;
-}
-.repositorie hr {
-  margin-top: 30px;
-}
-
-.fav-icon {
-  position: absolute;
-  right: 0;
-  top: 10px;
-  width: 31px;
-  cursor: pointer;
+  margin-right: 20px;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: sans-serif;
 }
 </style>
