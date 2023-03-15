@@ -25,9 +25,9 @@
 import { reactive, toRefs } from 'vue'
 
 const data = reactive({
-  dataBinBin: '' as string
+  dataRef: '' as string
 })
-const { dataBinBin } = toRefs(data)
+const { dataRef } = toRefs(data)
 </script>
 
 <style scoped>
@@ -64,10 +64,7 @@ const { dataBinBin } = toRefs(data)
   width: 100%;
   border-radius: 10px;
   margin: 10px 30px;
-  /* width: 650px;
-  margin: 20px;
-  justify-content: flex-start;
-  align-items: center; */
+
 }
 .card-users p {
   margin: 20px 10px;

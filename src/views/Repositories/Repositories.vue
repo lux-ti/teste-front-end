@@ -49,9 +49,9 @@
 import { reactive, toRefs } from 'vue'
 
 const data = reactive({
-  dataBinBin: '' as string
+  dataRef: '' as string
 })
-const { dataBinBin } = toRefs(data)
+const { dataRef } = toRefs(data)
 </script>
 
 <style scoped>
@@ -97,9 +97,6 @@ const { dataBinBin } = toRefs(data)
   cursor: pointer;
   border: none;
   background-color: transparent;
-}
-
-.title-card {
 }
 
 .card-repositories {

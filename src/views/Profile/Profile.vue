@@ -20,15 +20,15 @@
         </div>
         <div class="profile-item">
           <img src="@/assets/img/location.svg" />
-          <p>Fortal</p>
+          <p>Fortaleza</p>
         </div>
         <div class="profile-item">
           <img src="@/assets/img/repository.svg" />
-          <p>numero de repos</p>
+          <p>4</p>
         </div>
         <div class="profile-item">
           <img src="@/assets/img/followers.svg" />
-          <p>followrs</p>
+          <p>2</p>
         </div>
       </div>
     </div>
@@ -79,9 +79,9 @@
 import { reactive, toRefs } from 'vue'
 
 const data = reactive({
-  dataBinBin: '' as string
+  dataRef: '' as string
 })
-const { dataBinBin } = toRefs(data)
+const { dataRef } = toRefs(data)
 </script>
 
 <style scoped>
@@ -127,9 +127,6 @@ const { dataBinBin } = toRefs(data)
   cursor: pointer;
   border: none;
   background-color: transparent;
-}
-
-.title-card {
 }
 
 .card-repositories {
