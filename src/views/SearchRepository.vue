@@ -1,5 +1,5 @@
 <template>
- <p class="count">{{ this.total_count }} RESULTADOS ENCONTRADOS</p>
+  <p class="count">{{ this.total_count }} RESULTADOS ENCONTRADOS</p>
   <hr>
   <div class="list-repos">
     <ul>
@@ -35,8 +35,13 @@
       if(this.$route.params.repo){
         GitApi.repository_search(this.$route.params.repo).then(response => {
           const result = response.data
-          this.total_count = result.total_count
-          this.items = result.items
+
+          if(result.total_count > 0){
+            this.total_count = result.total_count
+            this.items = result.items
+          } else {
+            this.$router.push({ name:"home_page", params: { showModalNoResults: true }})
+          }
         })
       }
     }

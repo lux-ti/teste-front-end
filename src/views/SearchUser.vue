@@ -28,8 +28,13 @@
       if(this.$route.params.username){
         GitApi.user_search(this.$route.params.username).then(response => {
           const result = response.data
-          this.total_count = result.total_count
-          this.items = result.items
+
+          if(result.total_count > 0){
+            this.total_count = result.total_count
+            this.items = result.items
+          } else {
+            this.$router.push({ name:"home_page", params: { showModalNoResults: true }})
+          }
         })
       }
     },

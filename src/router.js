@@ -7,7 +7,7 @@ function lazyLoad(view){
 const routes = [
   { 
     path: "/", 
-    name: "homePage", 
+    name: "home_page", 
     component: () => lazyLoad('HomePage') 
   },
   { 

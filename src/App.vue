@@ -69,4 +69,23 @@
     margin: 2%;
     padding: .5em 1em;
   }
+
+  .modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background: #FFFFFF;
+    margin: 12% auto;
+    padding: 3% 1% 2%;
+    border-radius: 15px;
+    width: 20%;
+    letter-spacing: 1px;
+  }
 </style>

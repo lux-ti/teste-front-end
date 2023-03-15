@@ -8,21 +8,31 @@
       </div>
       <div class="searchInput">
         <input type="text" v-model="search_param" placeholder="Buscar..." />
-        <button class="searchButton">
+        <button class="searchButton" @click="showModal=true">
           <img alt="Search Icon" src="../assets/searchIcon.svg" class="icon">
         </button>
       </div>
     </form>
+    <!-- starts MODAL -->
+    <div class="modal" v-if="showModal">
+      <div class="modal-content">
+        <img alt="alert icon" src="../assets/alert.svg">
+        <h1>Desculpe!</h1>
+        <p>Não foi possível encontrar o diretório ou usuário desejado!</p>
+        <button type="button" class="btn-modal" @click="showModal=false">Certo</button>
+      </div>
+    </div>
+    <!-- ends MODAL -->
   </div>
 </template>
 
 <script>
-
   export default {
     data() {
       return {
         search_param: "",
-        type_option: "repository"
+        type_option: "repository",
+        showModal: this.$route.params.showModalNoResults
       }
 
     },
@@ -98,6 +108,17 @@
     background: transparent;
     border: none;
     display: flex;
+  }
+
+  .btn-modal {
+    font-weight: 600;
+    font-size: 1.7em;
+    background: #FF0000;
+    color: #fff;
+    padding: 2% 8%;
+    border: none;
+    border-radius: 10px;
+    margin-top: 5%;
   }
 
 </style>

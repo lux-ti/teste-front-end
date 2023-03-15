@@ -2,7 +2,7 @@
   <nav>
     <ul>
       <li class="active">
-        <router-link :to="{ name: 'homePage' }" exact-active-class="exact-active">INÍCIO</router-link>
+        <router-link :to="{ name: 'home_page' }" exact-active-class="exact-active">INÍCIO</router-link>
       </li>
       <li>
         <router-link :to="{ name: 'my_favorites' }" exact-active-class="exact-active">FAVORITOS</router-link>
@@ -12,14 +12,7 @@
   </nav>
 </template>
 
-<script>
-  export default {
-
-    mount(){
-      console.log(this.$route)
-    }
-  }
-</script>
+<script></script>
 
 <style scoped>
   nav {
